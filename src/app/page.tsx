@@ -7,7 +7,7 @@ export default function Home() {
       <div className="flex w-full h-full justify-center">
         <Navbar></Navbar>
       </div>
-      <div className="border rounded-lg h-screen md:mx-10 mb-60 bg-gradient-to-br from-lime-200 to-orange-300 opacity-20">
+      <div className="border rounded-lg h-screen md:mx-10 bg-gradient-to-br from-lime-200 to-orange-300 opacity-20">
 
       </div>
     </main>
