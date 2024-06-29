@@ -11,14 +11,14 @@ interface NavMobileProps {
 export default function NavMobile(props: NavMobileProps) {
     useEffect(() => {
         if (props.isOpen) {
-          document.body.classList.add("overflow-y-hidden")
+          document.body.style.overflow = 'hidden';
         } else {
-          document.body.classList.remove("overflow-y-hidden")
+          document.body.style.overflow = 'auto';
         }
-    });
+    }, [props.isOpen]);
     if (!props.isOpen) return;
     return (
-        <nav className="absolute h-[100vh] items-center bg-white z-10 w-screen">
+        <nav className="absolute h-[100vh] items-center bg-white z-10 w-screen mt-20">
             <div className="w-full px-5 items-center z-10">
                 <div className="flex-1 h-[60vh] text-3xl font-light">
                     <div className="py-1"></div>

@@ -9,7 +9,7 @@ import { MenuButton } from "./MenuButton";
 export default function Navbar() {
     const [isOpen, setOpen] = useState(false);
     return (
-        <div className="w-full">
+        <div className="w-full flex justify-center">
             <nav className="flex justify-between w-full max-w-[1280px] h-20 items-center">
                 <div className="flex w-full px-5 justify-between items-center max-w-[1280px]">
                     <div className="select-none drag-none">
