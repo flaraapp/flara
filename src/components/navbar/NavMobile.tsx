@@ -20,7 +20,7 @@ export default function NavMobile(props: NavMobileProps) {
     return (
         <nav className="absolute h-[100vh] items-center bg-white z-10 w-screen">
             <div className="w-full px-5 items-center z-10">
-                <div className="flex-1 h-[67vh] text-3xl font-light">
+                <div className="flex-1 h-[60vh] text-3xl font-light">
                     <div className="py-1"></div>
                     <NavItem name='Product' href="/product" childrenItems={[{name:"Features", href: "/features"}]}/>
                     <div className="py-1"></div>
