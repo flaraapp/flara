@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Button from "../button/Button";
 import NavItem from "./NavItem";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
 import NavMobile from "./NavMobile";
 import { MenuButton } from "./MenuButton";
