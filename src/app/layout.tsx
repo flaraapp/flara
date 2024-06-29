@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Karla, Frank_Ruhl_Libre } from "next/font/google";
+import { Karla, Noto_Serif_Display } from "next/font/google";
 import "./globals.css";
 
 const hanken = Karla({
@@ -7,7 +7,7 @@ const hanken = Karla({
   variable: '--font-hanken',
   display: 'swap'
 });
-const frank = Frank_Ruhl_Libre({
+const frank = Noto_Serif_Display({
   subsets: ["latin"],
   variable: '--font-frank',
   display: 'swap'

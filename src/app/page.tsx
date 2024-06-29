@@ -8,7 +8,7 @@ export default function Home() {
         <Navbar></Navbar>
       </div>
       <div className="rounded-2xl h-screen md:mx-10 bg-gradient-to-b from-lime-200 to-orange-300 opacity-100">
-
+          <h1 className="font-serif text-4xl text-center font-medium px-3 pt-20">Speech and interview prep made easy with Flara</h1>
       </div>
     </main>
   );
