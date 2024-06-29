@@ -21,7 +21,7 @@ export default function Navbar() {
                         />
                     </div>
                     <div className="w-grow font-semibold gap-8 hidden md:flex">
-                        <NavItem name='Product' href="/product" childrenItems={[{name:"Features", href: "/features"}]}/>
+                        <NavItem name='Product' href="/product" childrenItems={[{name:"Features", href: "/features"}, {name:"Support", href: "/support"}]}/>
                         <NavItem name='Company' href="/Company" childrenItems={[{name:"About", href: "/about"}]}/>
                         <NavItem name='Blog' href="/blog"/>
                     </div>

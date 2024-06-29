@@ -87,10 +87,10 @@ export default function NavItem(item: NavItemProps) {
                 </div>
             )}
             {(isOpen && !isMobile) && (
-                <div className="absolute z-10 w-48 bg-white shadow-lg rounded-md border border-gray-200">
+                <div className="absolute z-10 bg-white shadow-md p-1 py-3 border border-gray-200">
                     {item.childrenItems.map((child, index) => (
                         <Link href={child.href!} key={index}>
-                            <div className="block px-4 py-2 text-sm hover:bg-gray-100 transition duration-500">
+                            <div className="block px-4 py-1 hover:text-gray-500 transition duration-500">
                                 {child.name}
                             </div>
                         </Link>
