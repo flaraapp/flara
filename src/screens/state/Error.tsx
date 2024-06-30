@@ -7,7 +7,7 @@ interface ErrorProps {
 export default function ErrorScreen({error}: ErrorProps) {
     return (
         <div className=''>
-        <div className='flex h-[90vh] w-full justify-center items-center'>
+        <div className='flex h-[75vh] md:h-[90vh] w-full justify-center items-center'>
             <div className='grid grid-rows-3'>
                 <span className='text-2xl text-gray-700 text-center'>We&apos;re sorry, an error has occured.</span>
                 <span className='text-xl text-gray-500 text-center'>Please try again later.</span>
