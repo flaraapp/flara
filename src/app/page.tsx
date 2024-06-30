@@ -6,7 +6,11 @@ import HomeContent from "../screens/home/Home"
 export default async function Home() {
   const session = await getSession();
 
-  if (session) return <Dashboard/>;
+  if (session) return (
+    <div className="h-screen">
+      <Dashboard/>
+    </div>
+);
 
   return <HomeContent/>;
 }
