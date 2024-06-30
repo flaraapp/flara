@@ -1,13 +1,28 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiOutlineDocumentReport, HiOutlineMicrophone, HiOutlineUserGroup } from 'react-icons/hi';
 import { MenuButton } from '../button/MenuButton';
 
 export default function MenuBar() {
     const [isHovered, setIsHovered] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
+
+    const handleClickOutside = (event: MouseEvent) => {
+        if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+            setIsHovered(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
 
     return (
         <motion.div
+            ref={menuRef}
             className="absolute top-0 left-0 mt-4 ml-4 border p-3 rounded-full shadow-md sm:rounded-full sm:w-auto sm:flex sm:items-center z-20 bg-white"
             layout
             initial={{ borderRadius: 50 }}
@@ -17,7 +32,7 @@ export default function MenuBar() {
             <div className="cursor-pointer sm:hidden flex items-center p-[0.6rem]" onClick={() => setIsHovered(!isHovered)}>
                 <MenuButton
                     isOpen={isHovered}
-                    onClick={() => {}}
+                    onClick={() => { }}
                     strokeWidth="1.7"
                     height={12}
                     width={15}
