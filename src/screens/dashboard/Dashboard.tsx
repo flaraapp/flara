@@ -1,7 +1,7 @@
 'use client';
 
 import { useUser } from '@auth0/nextjs-auth0/client';
-import LoadingScreen from '../Loading';
+import LoadingScreen from '../state/Loading';
 import ErrorScreen from '../state/Error'
 import UserMenu from '@/components/dashboard/UserMenu';
 export default function Dashboard() {
