@@ -6,7 +6,7 @@ import Button from "../button/Button";
 import NavItem from "./NavItem";
 import { useState } from "react";
 import NavMobile from "./NavMobile";
-import { MenuButton } from "./MenuButton";
+import { MenuButton } from "../button/MenuButton";
 export default function Navbar() {
     const [isOpen, setOpen] = useState(false);
     const { user, error, isLoading } = useUser();

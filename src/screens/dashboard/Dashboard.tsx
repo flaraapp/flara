@@ -4,6 +4,7 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import LoadingScreen from '../state/Loading';
 import ErrorScreen from '../state/Error'
 import UserMenu from '@/components/dashboard/UserMenu';
+import MenuBar from '@/components/dashboard/MenuBar';
 export default function Dashboard() {
   const { user, error, isLoading } = useUser();
   
@@ -15,6 +16,7 @@ export default function Dashboard() {
       <div>
         <UserMenu user={user}/>
         {/* <BottomBar /> */}
+        <MenuBar/>
       </div>
     )
   );
