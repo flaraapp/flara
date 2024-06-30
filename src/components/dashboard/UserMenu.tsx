@@ -29,7 +29,7 @@ export default function UserMenu({ user }: UserMenuProps) {
                 <Image
                     src={user.picture || "https://st3.depositphotos.com/6672868/13701/v/450/depositphotos_137014128-stock-illustration-user-profile-icon.jpg"}
                     alt={user.name as string}
-                    className="border w-8 h-8 rounded-full mr-2 no-drag no-select"
+                    className="border w-8 h-8 rounded-full mr-2 select-none drag-none"
                     width={50}
                     height={50}
                 />
