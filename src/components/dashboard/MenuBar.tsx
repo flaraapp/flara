@@ -27,7 +27,7 @@ export default function MenuBar({ activePage }: MenuBarProps) {
     return (
         <motion.div
             ref={menuRef}
-            className="absolute top-0 left-0 mt-4 ml-4 border p-3 rounded-full shadow-md sm:rounded-full sm:w-auto sm:flex sm:items-center z-20 bg-white"
+            className="absolute top-0 left-0 mt-4 ml-4 border p-3 md:p-2 rounded-full shadow-md sm:rounded-full sm:w-auto sm:flex sm:items-center z-20 bg-white"
             layout
             initial={{ borderRadius: 50 }}
             animate={{ borderRadius: isHovered ? 30 : 50 }}
@@ -69,15 +69,15 @@ export default function MenuBar({ activePage }: MenuBarProps) {
                         transition={{ type: "tween", duration: 0.1 }}
                         layout
                     >
-                        <a href="/reports" className="p-2 flex items-center transition duration-500 hover:bg-gray-100 rounded-full">
+                        <a href="/reports" className={`p-2 flex items-center transition duration-500 rounded-full ${activePage === 'reports' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                             <HiOutlineDocumentReport className="inline-block mr-2" />
                             Reports
                         </a>
-                        <a href="/speech" className="p-2 flex items-center transition duration-500 hover:bg-gray-100 rounded-full">
+                        <a href="/speech" className={`p-2 flex items-center transition duration-500 rounded-full ${activePage === 'speech' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                             <HiOutlineMicrophone className="inline-block mr-2" />
                             Speech
                         </a>
-                        <a href="/interview" className="p-2 flex items-center transition duration-500 hover:bg-gray-100 rounded-full">
+                        <a href="/interview" className={`p-2 flex items-center transition duration-500 rounded-full ${activePage === 'interview' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                             <HiOutlineUserGroup className="inline-block mr-2" />
                             Interview
                         </a>
