@@ -2,7 +2,7 @@ import Image from 'next/image';
 export default function Dashboard() {
     return (
     <div className=''>
-      <div className='flex h-[90vh] w-full justify-center items-center'>
+      <div className='flex h-[75vh] md:h-[90vh] w-full justify-center items-center'>
         <div className=''>
           <div className='flex justify-center items-center w-full pb-4'>
             <svg aria-hidden="true" className="w-16 h-16 text-gray-200 animate-spin fill-[#6cde12] flex justify-center items-center" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
