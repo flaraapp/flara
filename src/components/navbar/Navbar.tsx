@@ -1,4 +1,6 @@
 "use client";
+
+import { useUser } from '@auth0/nextjs-auth0/client';
 import Image from "next/image";
 import Button from "../button/Button";
 import NavItem from "./NavItem";
@@ -7,6 +9,7 @@ import NavMobile from "./NavMobile";
 import { MenuButton } from "./MenuButton";
 export default function Navbar() {
     const [isOpen, setOpen] = useState(false);
+    const { user, error, isLoading } = useUser();
     return (
         <div className="w-full flex justify-center">
             <nav className="flex justify-between w-full max-w-[1280px] h-20 items-center">
@@ -27,7 +30,10 @@ export default function Navbar() {
                     </div>
                     <div className="gap-2 hidden md:flex">
                         <Button text="Donate" type="secondary" href="/donate"></Button>
-                        <Button text="Login" type="primary" href="/login"></Button>
+                        {  (user) ?
+                        <Button text="Dashboard" type="primary" href="/"></Button> :
+                        <Button text="Login" type="primary" href="/api/auth/login"></Button>
+                    }
                     </div>
                     <div className="md:hidden items-center flex">
                         <MenuButton

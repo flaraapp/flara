@@ -8,6 +8,7 @@ interface NavItemProps {
     name: string;
     href?: string;
     childrenItems?: Array<NavItemProps>;
+    dropdown?: boolean;
 }
 
 export default function NavItem(item: NavItemProps) {
@@ -75,7 +76,7 @@ export default function NavItem(item: NavItemProps) {
                     <BsChevronDown size={15}/>
                 </motion.div>
             </button>
-            {(isOpen && isMobile) && (
+            {(isOpen && (isMobile && !item.dropdown)) && (
                 <div className="">
                     {item.childrenItems.map((child, index) => (
                         <Link href={child.href!} key={index}>
@@ -86,7 +87,7 @@ export default function NavItem(item: NavItemProps) {
                     ))}
                 </div>
             )}
-            {(isOpen && !isMobile) && (
+            {(isOpen && (!isMobile || item.dropdown)) && (
                 <div className="absolute z-10 bg-white shadow-md p-1 py-3 border border-gray-200">
                     {item.childrenItems.map((child, index) => (
                         <Link href={child.href!} key={index}>

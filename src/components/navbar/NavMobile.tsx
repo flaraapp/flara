@@ -1,7 +1,8 @@
-import Image from "next/image";
+'use client';
+
+import { useUser } from '@auth0/nextjs-auth0/client';
 import Button from "../button/Button";
 import NavItem from "./NavItem";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { Dispatch, SetStateAction, useEffect } from "react";
 
 interface NavMobileProps {
@@ -9,6 +10,7 @@ interface NavMobileProps {
     toggleNav: Dispatch<SetStateAction<boolean>>;
 }
 export default function NavMobile(props: NavMobileProps) {
+    const { user, error, isLoading } = useUser();
     useEffect(() => {
         if (props.isOpen) {
           document.body.style.overflow = 'hidden';
@@ -17,6 +19,7 @@ export default function NavMobile(props: NavMobileProps) {
         }
     }, [props.isOpen]);
     if (!props.isOpen) return;
+
     return (
         <nav className="absolute h-[100vh] items-center bg-white z-10 w-screen mt-20">
             <div className="w-full px-5 items-center z-10">
@@ -30,7 +33,10 @@ export default function NavMobile(props: NavMobileProps) {
                 </div>
                 <div className="gap-2 grid grid-rows-2">
                     <Button text="Donate" type="secondary" href="/donate"></Button>
-                    <Button text="Login" type="primary" href="/login"></Button>
+                    {  (user) ?
+                        <Button text="Dashboard" type="primary" href="/"></Button> :
+                        <Button text="Login" type="primary" href="/api/auth/login"></Button>
+                    }
                 </div>
             </div>
         </nav>

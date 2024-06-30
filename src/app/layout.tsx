@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Karla, Noto_Serif_Display } from "next/font/google";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 import "./globals.css";
 
 const hanken = Karla({
@@ -25,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${hanken.variable} ${frank.variable} font-sans`}>{children}</body>
+      <UserProvider>
+        <body className={`${hanken.variable} ${frank.variable} font-sans text-[#222222]`}>{children}</body>
+      </UserProvider>
     </html>
   );
 }

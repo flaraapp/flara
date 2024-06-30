@@ -1,15 +1,12 @@
 import Navbar from "@/components/navbar/Navbar";
-import Image from "next/image";
+import { getSession } from '@auth0/nextjs-auth0';
+import Dashboard from "../screens/dashboard/Dashboard";
+import HomeContent from "../screens/home/Home"
 
-export default function Home() {
-  return (
-    <main className="flex-row text-[#222222] z-0">
-      <div className="flex w-full h-full justify-center">
-        <Navbar></Navbar>
-      </div>
-      <div className="h-screen md:mx-10">
-          <h1 className="font-serif text-4xl text-center font-medium px-3 pt-20">Speech and interview prep made easy with Flara</h1>
-      </div>
-    </main>
-  );
+export default async function Home() {
+  const session = await getSession();
+
+  if (session) return <Dashboard/>;
+
+  return <HomeContent/>;
 }
