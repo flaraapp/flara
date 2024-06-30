@@ -3,8 +3,6 @@
 import { useUser } from '@auth0/nextjs-auth0/client';
 import LoadingScreen from '../Loading';
 import ErrorScreen from '../state/Error'
-import BottomBar from '@/components/dashboard/BottomBar';
-import Image from 'next/image'
 import UserMenu from '@/components/dashboard/UserMenu';
 export default function Dashboard() {
   const { user, error, isLoading } = useUser();
