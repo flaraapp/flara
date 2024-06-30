@@ -15,7 +15,6 @@ export default function Dashboard() {
     user && (
       <div>
         <UserMenu user={user}/>
-        {/* <BottomBar /> */}
         <MenuBar activePage={'reports'}/>
       </div>
     )
