@@ -3,7 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { HiOutlineDocumentReport, HiOutlineMicrophone, HiOutlineUserGroup } from 'react-icons/hi';
 import { MenuButton } from '../button/MenuButton';
 
-export default function MenuBar() {
+interface MenuBarProps {
+    activePage: 'reports' | 'speech' | 'interview';
+}
+
+export default function MenuBar({ activePage }: MenuBarProps) {
     const [isHovered, setIsHovered] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
 
@@ -42,15 +46,15 @@ export default function MenuBar() {
                 {isHovered && <span className="ml-5">Close</span>}
             </div>
             <div className="hidden sm:flex items-center space-x-4 mt-0">
-                <a href="/reports" className="flex items-center transition duration-500 hover:bg-gray-100 rounded-full p-2">
+                <a href="/reports" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'reports' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                     <HiOutlineDocumentReport className="inline-block mr-2" />
                     Reports
                 </a>
-                <a href="/speech" className="flex items-center transition duration-500 hover:bg-gray-100 rounded-full p-2">
+                <a href="/speech" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'speech' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                     <HiOutlineMicrophone className="inline-block mr-2" />
                     Speech
                 </a>
-                <a href="/interview" className="flex items-center transition duration-500 hover:bg-gray-100 rounded-full p-2">
+                <a href="/interview" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'interview' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                     <HiOutlineUserGroup className="inline-block mr-2" />
                     Interview
                 </a>
