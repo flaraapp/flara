@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiOutlineDocumentReport, HiOutlineMicrophone, HiOutlineUserGroup } from 'react-icons/hi';
 import { MenuButton } from '../button/MenuButton';
+import Link from 'next/link';
 
 interface MenuBarProps {
     activePage: 'reports' | 'speech' | 'interview';
@@ -46,18 +47,18 @@ export default function MenuBar({ activePage }: MenuBarProps) {
                 {isHovered && <span className="ml-5">Close</span>}
             </div>
             <div className="hidden sm:flex items-center space-x-4 mt-0">
-                <a href="/reports" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'reports' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
+                <Link href="/reports" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'reports' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                     <HiOutlineDocumentReport className="inline-block mr-2" />
                     Reports
-                </a>
-                <a href="/speech" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'speech' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
+                </Link>
+                <Link href="/speech" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'speech' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                     <HiOutlineMicrophone className="inline-block mr-2" />
                     Speech
-                </a>
-                <a href="/interview" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'interview' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
+                </Link>
+                <Link href="/interview" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'interview' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                     <HiOutlineUserGroup className="inline-block mr-2" />
                     Interview
-                </a>
+                </Link>
             </div>
             <AnimatePresence>
                 {isHovered && (
@@ -69,18 +70,18 @@ export default function MenuBar({ activePage }: MenuBarProps) {
                         transition={{ type: "tween", duration: 0.1 }}
                         layout
                     >
-                        <a href="/reports" className={`p-2 flex items-center transition duration-500 rounded-full ${activePage === 'reports' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
+                        <Link href="/reports" className={`p-2 flex items-center transition duration-500 rounded-full ${activePage === 'reports' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                             <HiOutlineDocumentReport className="inline-block mr-2" />
                             Reports
-                        </a>
-                        <a href="/speech" className={`p-2 flex items-center transition duration-500 rounded-full ${activePage === 'speech' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
+                        </Link>
+                        <Link href="/speech" className={`p-2 flex items-center transition duration-500 rounded-full ${activePage === 'speech' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                             <HiOutlineMicrophone className="inline-block mr-2" />
                             Speech
-                        </a>
-                        <a href="/interview" className={`p-2 flex items-center transition duration-500 rounded-full ${activePage === 'interview' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
+                        </Link>
+                        <Link href="/interview" className={`p-2 flex items-center transition duration-500 rounded-full ${activePage === 'interview' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
                             <HiOutlineUserGroup className="inline-block mr-2" />
                             Interview
-                        </a>
+                        </Link>
                     </motion.div>
                 )}
             </AnimatePresence>
