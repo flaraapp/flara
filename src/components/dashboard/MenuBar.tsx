@@ -27,7 +27,7 @@ export default function MenuBar({ activePage }: MenuBarProps) {
     return (
         <motion.div
             ref={menuRef}
-            className="absolute top-0 left-0 mt-4 ml-4 border p-3 md:p-2 rounded-full shadow-md sm:rounded-full sm:w-auto sm:flex sm:items-center z-20 bg-white"
+            className="absolute top-0 left-0 mt-4 ml-4 border p-3 md:p-2 rounded-full sm:rounded-full sm:w-auto sm:flex sm:items-center z-20 bg-white"
             layout
             initial={{ borderRadius: 50 }}
             animate={{ borderRadius: isHovered ? 30 : 50 }}

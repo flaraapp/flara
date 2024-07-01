@@ -17,7 +17,7 @@ export default function UserMenu({ user }: UserMenuProps) {
     };
     return (
         <motion.div
-            className="absolute top-0 right-0 mt-4 mr-4 border p-3 rounded-full shadow-md"
+            className="absolute top-0 right-0 mt-4 mr-4 border p-3 rounded-full"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             layout
