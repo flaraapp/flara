@@ -1,3 +1,4 @@
+import VideoRecorder from '@/components/dashboard/VideoRecorder';
 import { UserProfile } from '@auth0/nextjs-auth0/client';
 
 interface SpeechProps {
@@ -5,6 +6,8 @@ interface SpeechProps {
 }
 export default function SpeechContent({user}: SpeechProps) {
   return (
-    <div className='h-screen w-sceen flex justify-center items-center'>Speech</div>
+    <div className='h-screen w-sceen flex justify-center items-center'>
+      <VideoRecorder/>
+    </div>
   );
 }
