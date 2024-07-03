@@ -1,9 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ReactMediaRecorder, ReactMediaRecorderRenderProps } from 'react-media-recorder';
+import { HiOutlinePlay, HiOutlineStop } from 'react-icons/hi';
+import { HiOutlineVideoCameraSlash, HiOutlineVideoCamera } from "react-icons/hi2";
 
 export default function VideoRecorder() {
   const [permissionsDenied, setPermissionsDenied] = useState(false);
   const [cameraEnabled, setCameraEnabled] = useState(true);
+  const [isRecording, setIsRecording] = useState(false);
+  const [recordingCompleted, setRecordingCompleted] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleRequestPermissions = () => {
@@ -27,6 +31,15 @@ export default function VideoRecorder() {
     }
   }, [cameraEnabled]);
 
+  const handleToggleRecording = (startRecording: () => void, stopRecording: () => void) => {
+    if (isRecording) {
+      stopRecording();
+    } else {
+      startRecording();
+    }
+    setIsRecording(!isRecording);
+  };
+
   return (
     <ReactMediaRecorder
       video={cameraEnabled}
@@ -39,10 +52,6 @@ export default function VideoRecorder() {
         previewStream,
         error,
       }: ReactMediaRecorderRenderProps) => {
-        if (status === 'acquiring_media' || status === 'delayed_start') {
-          return <div className="flex justify-center items-center h-full">Acquiring media...</div>;
-        }
-
         if (status === 'permission_denied' || permissionsDenied) {
           return (
             <div className="flex flex-col justify-center items-center h-full text-center">
@@ -60,7 +69,7 @@ export default function VideoRecorder() {
         return (
           <div className="flex flex-col items-center rounded-lg">
             <div className="relative mt-24 md:mt-20 rounded-lg flex justify-center items-center px-5 md:px-0">
-              {cameraEnabled && (
+              {(cameraEnabled || recordingCompleted) && (
                 previewStream ? (
                   <video
                     className="md:w-full w-[calc(100vh-7rem)] md:h-[calc(100vh-13rem)] rounded-xl"
@@ -87,29 +96,22 @@ export default function VideoRecorder() {
             </div>
             <div className="mt-4 flex space-x-4">
               <button
-                onClick={startRecording}
-                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                onClick={() => handleToggleRecording(startRecording, stopRecording)}
+                className={`px-4 py-2 ${isRecording ? 'bg-red-500 text-white' : 'bg-[#9aee59]'} rounded-full hover:bg-[#6cde12]  flex items-center`}
               >
-                Start Recording
+                {isRecording ? <HiOutlineStop className="mr-2" /> : <HiOutlinePlay className="mr-2" />}
+                {isRecording ? 'Stop Recording' : 'Start Recording'}
               </button>
               <button
-                onClick={stopRecording}
-                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                onClick={() => {
+                  setCameraEnabled(!cameraEnabled);
+                  setRecordingCompleted(false); // Reset recording completed flag when toggling camera
+                }}
+                className="px-4 py-2 border text-black rounded-full"
               >
-                Stop Recording
-              </button>
-              <button
-                onClick={() => setCameraEnabled(!cameraEnabled)}
-                className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-              >
-                {cameraEnabled ? 'Disable Camera' : 'Enable Camera'}
+               {cameraEnabled ? <HiOutlineVideoCameraSlash size={24} /> : <HiOutlineVideoCamera size={24} />}
               </button>
             </div>
-            {mediaBlobUrl && (
-              <div className="mt-4">
-                <video src={mediaBlobUrl} controls className="w-full h-64"></video>
-              </div>
-            )}
             {error && <div className="text-red-500 mt-2">{error}</div>}
           </div>
         );
