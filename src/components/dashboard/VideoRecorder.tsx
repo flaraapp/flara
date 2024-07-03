@@ -3,6 +3,7 @@ import { ReactMediaRecorder, ReactMediaRecorderRenderProps } from 'react-media-r
 
 export default function VideoRecorder() {
   const [permissionsDenied, setPermissionsDenied] = useState(false);
+  const [cameraEnabled, setCameraEnabled] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleRequestPermissions = () => {
@@ -18,12 +19,17 @@ export default function VideoRecorder() {
   };
 
   useEffect(() => {
-    handleRequestPermissions();
-  }, []);
+    if (cameraEnabled) {
+      handleRequestPermissions();
+    } else if (videoRef.current && videoRef.current.srcObject) {
+      (videoRef.current.srcObject as MediaStream).getTracks().forEach(track => track.stop());
+      videoRef.current.srcObject = null;
+    }
+  }, [cameraEnabled]);
 
   return (
     <ReactMediaRecorder
-      video
+      video={cameraEnabled}
       audio
       render={({
         status,
@@ -53,28 +59,30 @@ export default function VideoRecorder() {
 
         return (
           <div className="flex flex-col items-center">
-            <div className="relative w-full h-64 bg-gray-200 rounded-lg flex justify-center items-center">
-              {previewStream ? (
-                <video
-                  className="w-full h-full"
-                  ref={(video) => {
-                    if (video && previewStream) {
-                      video.srcObject = previewStream;
-                      video.play();
-                    }
-                  }}
-                  autoPlay
-                  playsInline
-                  muted
-                />
-              ) : (
-                <video
-                  className="w-full h-full"
-                  ref={videoRef}
-                  autoPlay
-                  playsInline
-                  muted
-                />
+            <div className="relative mt-20  rounded-lg flex justify-center items-center">
+              {cameraEnabled && (
+                previewStream ? (
+                  <video
+                    className="w-full h-[calc(100vh-13rem)] rounded-lg"
+                    ref={(video) => {
+                      if (video && previewStream) {
+                        video.srcObject = previewStream;
+                        video.play();
+                      }
+                    }}
+                    autoPlay
+                    playsInline
+                    muted
+                  />
+                ) : (
+                  <video
+                    className="w-full h-[calc(100vh-13rem)] rounded-lg"
+                    ref={videoRef}
+                    autoPlay
+                    playsInline
+                    muted
+                  />
+                )
               )}
             </div>
             <div className="mt-4 flex space-x-4">
@@ -89,6 +97,12 @@ export default function VideoRecorder() {
                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
               >
                 Stop Recording
+              </button>
+              <button
+                onClick={() => setCameraEnabled(!cameraEnabled)}
+                className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+              >
+                {cameraEnabled ? 'Disable Camera' : 'Enable Camera'}
               </button>
             </div>
             {mediaBlobUrl && (
