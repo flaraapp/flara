@@ -58,12 +58,12 @@ export default function VideoRecorder() {
         }
 
         return (
-          <div className="flex flex-col items-center">
-            <div className="relative mt-20 w-full h-full rounded-lg flex justify-center items-center">
+          <div className="flex flex-col items-center rounded-lg">
+            <div className="relative mt-20 rounded-lg flex justify-center items-center px-2 md:px-0">
               {cameraEnabled && (
                 previewStream ? (
                   <video
-                    className="w-full h-[calc(100vh-16rem)] md:h-[calc(100vh-13rem)] rounded-lg"
+                    className="md:w-full md:h-[calc(100vh-13rem)] rounded-xl"
                     ref={(video) => {
                       if (video && previewStream) {
                         video.srcObject = previewStream;
@@ -76,7 +76,7 @@ export default function VideoRecorder() {
                   />
                 ) : (
                   <video
-                    className="w-full h-[calc(100vh-16rem)] md:h-[calc(100vh-13rem)] rounded-lg"
+                    className="md:w-full md:h-[calc(100vh-13rem)] rounded-xl"
                     ref={videoRef}
                     autoPlay
                     playsInline
