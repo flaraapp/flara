@@ -63,7 +63,7 @@ export default function VideoRecorder() {
               {cameraEnabled && (
                 previewStream ? (
                   <video
-                    className="md:w-full md:h-[calc(100vh-13rem)] rounded-xl"
+                    className="md:w-full h-full w-[calc(100vh-4rem)] md:h-[calc(100vh-13rem)] rounded-xl"
                     ref={(video) => {
                       if (video && previewStream) {
                         video.srcObject = previewStream;
@@ -76,7 +76,7 @@ export default function VideoRecorder() {
                   />
                 ) : (
                   <video
-                    className="md:w-full md:h-[calc(100vh-13rem)] rounded-xl"
+                    className="md:w-full h-full w-[calc(100vh-4rem)] md:h-[calc(100vh-13rem)] rounded-xl"
                     ref={videoRef}
                     autoPlay
                     playsInline
