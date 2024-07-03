@@ -59,7 +59,7 @@ export default function VideoRecorder() {
 
         return (
           <div className="flex flex-col items-center">
-            <div className="relative mt-20  rounded-lg flex justify-center items-center">
+            <div className="relative mt-20 w-full h-full rounded-lg flex justify-center items-center">
               {cameraEnabled && (
                 previewStream ? (
                   <video
