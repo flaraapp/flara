@@ -102,15 +102,17 @@ export default function VideoRecorder() {
                 {isRecording ? <HiOutlineStop className="mr-2" /> : <HiOutlinePlay className="mr-2" />}
                 {isRecording ? 'Stop Recording' : 'Start Recording'}
               </button>
-              <button
-                onClick={() => {
-                  setCameraEnabled(!cameraEnabled);
-                  setRecordingCompleted(false); // Reset recording completed flag when toggling camera
-                }}
-                className="px-4 py-2 border text-black rounded-full"
-              >
-               {cameraEnabled ? <HiOutlineVideoCameraSlash size={24} /> : <HiOutlineVideoCamera size={24} />}
-              </button>
+              {!isRecording && (
+                <button
+                  onClick={() => {
+                    setCameraEnabled(!cameraEnabled);
+                    setRecordingCompleted(false); // Reset recording completed flag when toggling camera
+                  }}
+                  className="px-4 py-2 border text-black rounded-full"
+                >
+                  {cameraEnabled ? <HiOutlineVideoCameraSlash size={24} /> : <HiOutlineVideoCamera size={24} />}
+                </button>
+              )}
             </div>
             {error && <div className="text-red-500 mt-2">{error}</div>}
           </div>
