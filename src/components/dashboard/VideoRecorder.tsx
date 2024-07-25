@@ -3,7 +3,12 @@ import { ReactMediaRecorder, ReactMediaRecorderRenderProps } from 'react-media-r
 import { HiOutlinePlay, HiOutlineStop } from 'react-icons/hi';
 import { HiOutlineVideoCameraSlash, HiOutlineVideoCamera } from "react-icons/hi2";
 
-export default function VideoRecorder() {
+interface RecorderProps {
+  setBlob: React.Dispatch<React.SetStateAction<Blob | null>>;
+  setBlobUrl: React.Dispatch<React.SetStateAction<string | null>>;
+  setIsVideo: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export default function VideoRecorder({setBlob, setBlobUrl, setIsVideo}: RecorderProps) {
   const [permissionsDenied, setPermissionsDenied] = useState(false);
   const [cameraEnabled, setCameraEnabled] = useState(true);
   const [isRecording, setIsRecording] = useState(false);
@@ -23,12 +28,25 @@ export default function VideoRecorder() {
   };
 
   useEffect(() => {
+    // Function to stop the media stream
+    const stopMediaStream = () => {
+      if (videoRef.current && videoRef.current.srcObject) {
+        const tracks = (videoRef.current.srcObject as MediaStream).getTracks();
+        tracks.forEach(track => track.stop());
+        videoRef.current.srcObject = null;
+      }
+    };
+
     if (cameraEnabled) {
       handleRequestPermissions();
-    } else if (videoRef.current && videoRef.current.srcObject) {
-      (videoRef.current.srcObject as MediaStream).getTracks().forEach(track => track.stop());
-      videoRef.current.srcObject = null;
+    } else {
+      stopMediaStream();
     }
+
+    // Cleanup function to stop the media stream when the component unmounts
+    return () => {
+      stopMediaStream();
+    };
   }, [cameraEnabled]);
 
   const handleToggleRecording = (startRecording: () => void, stopRecording: () => void) => {
@@ -44,6 +62,7 @@ export default function VideoRecorder() {
     <ReactMediaRecorder
       video={cameraEnabled}
       audio
+      onStop={(blobUrl: string, blob: Blob)=>{setBlob(blob); setBlobUrl(blobUrl); setIsVideo(cameraEnabled);}}
       render={({
         status,
         startRecording,
@@ -97,7 +116,7 @@ export default function VideoRecorder() {
             <div className="mt-4 flex space-x-4">
               <button
                 onClick={() => handleToggleRecording(startRecording, stopRecording)}
-                className={`px-4 py-2 ${isRecording ? 'bg-red-500 text-white' : 'bg-[#9aee59]'} rounded-full hover:bg-[#6cde12]  flex items-center`}
+                className={`px-4 py-2 ${isRecording ? 'bg-red-500 text-white hover:bg-red-600' : 'bg-[#9aee59] hover:bg-[#6cde12]'} rounded-full  flex items-center`}
               >
                 {isRecording ? <HiOutlineStop className="mr-2" /> : <HiOutlinePlay className="mr-2" />}
                 {isRecording ? 'Stop Recording' : 'Start Recording'}

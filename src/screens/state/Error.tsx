@@ -4,6 +4,7 @@ import Button from '@/components/button/Button';
 interface ErrorProps {
     error: Error;
 }
+
 export default function ErrorScreen({error}: ErrorProps) {
     return (
         <div className=''>

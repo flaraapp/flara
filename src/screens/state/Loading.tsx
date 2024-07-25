@@ -1,7 +1,9 @@
 import Image from 'next/image';
-export default function Dashboard() {
+import { PropsWithChildren } from 'react';
+export default function Loading(props: PropsWithChildren){
     return (
     <div className=''>
+      {props.children}
       <div className='flex h-[75vh] md:h-[90vh] w-full justify-center items-center'>
         <div className=''>
           <div className='flex justify-center items-center w-full pb-4'>
@@ -15,7 +17,7 @@ export default function Dashboard() {
       </div>
       <div className='w-full flex items-center justify-center'>
         <Image
-            src={"flara.svg"}
+            src={require('../../../public/flara.svg')}
             alt={"Flara"}
             width={135}
             height={50}

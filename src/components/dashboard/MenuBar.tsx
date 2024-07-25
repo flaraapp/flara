@@ -47,15 +47,15 @@ export default function MenuBar({ activePage }: MenuBarProps) {
                 {isHovered && <span className="ml-5">Close</span>}
             </div>
             <div className="hidden sm:flex items-center space-x-4 mt-0">
-                <Link href="/reports" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'reports' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
+                <Link href="/reports" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'reports' ? 'text-[#22222290]' : 'hover:bg-gray-100'}`}>
                     <HiOutlineDocumentReport className="inline-block mr-2" />
                     Reports
                 </Link>
-                <Link href="/speech" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'speech' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
+                <Link href="/speech" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'speech' ? 'text-[#22222290]' : 'hover:bg-gray-100'}`}>
                     <HiOutlineMicrophone className="inline-block mr-2" />
                     Speech
                 </Link>
-                <Link href="/interview" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'interview' ? 'text-gray-500' : 'hover:bg-gray-100'}`}>
+                <Link href="/interview" className={`flex items-center transition duration-500 rounded-full p-2 ${activePage === 'interview' ? 'text-[#22222290]' : 'hover:bg-gray-100'}`}>
                     <HiOutlineUserGroup className="inline-block mr-2" />
                     Interview
                 </Link>

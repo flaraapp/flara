@@ -1,10 +1,7 @@
 import Image from 'next/image';
 import Button from '@/components/button/Button';
 
-interface ErrorProps {
-    error: Error;
-}
-export default function ErrorScreen({error}: ErrorProps) {
+export default function ErrorScreen() {
     return (
         <div className=''>
         <div className='flex h-[75vh] md:h-[90vh] w-full justify-center items-center'>
