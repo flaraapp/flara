@@ -8,7 +8,7 @@ export default function HomeContent() {
       </div>
       <div className="h-screen md:mx-10">
           <h1 className="text-7xl font-medium pt-20 mx-10 ">
-            Speech and Interview Prep, made <p className="w-min border-[#B2F260] border-b-8">Acessible</p>
+            Speech and Interview Prep, made <p className="w-min border-[#B2F260] border-b-8">Accessible</p>
             </h1>
       </div>
     </main>
