@@ -26,7 +26,7 @@ export default function ReportsContent({user}: ReportsProps) {
           .then(res => { setDataInterview(res.data as any) });
       };
       fetchData();
-    });
+    }, []);
   console.log(dataSpeech);
   console.log(dataInterview);
   return (
