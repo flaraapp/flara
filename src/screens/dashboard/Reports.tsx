@@ -13,6 +13,7 @@ export default function ReportsContent({user}: ReportsProps) {
   const [dataInterview, setDataInterview] = useState([]);
   useEffect(() => {
       const fetchData = () => {
+        console.log("Fetching...")
         client.from('speech_reports')
           .select()
           .eq("user_id", user?.sub)
