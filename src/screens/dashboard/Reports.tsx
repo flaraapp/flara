@@ -23,6 +23,8 @@ export default function ReportsContent({user}: ReportsProps) {
           .then(res => { setDataInterview(res.data as any) });
       };
     }, [user?.sub]);
+  console.log(dataSpeech);
+  console.log(dataInterview);
   return (
     <div className='mt-36 w-screen'>
       <h1 className='text-3xl font-light mx-5'>Speech</h1>
