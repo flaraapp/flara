@@ -12,8 +12,7 @@ export default function ReportsContent({user}: ReportsProps) {
   const [dataSpeech, setDataSpeech] = useState([]);
   const [dataInterview, setDataInterview] = useState([]);
   useEffect(() => {
-      console.log('Fetching');
-      return () => {
+      const fetchData = () => {
         client.from('speech_reports')
           .select()
           .eq("user_id", user?.sub)
@@ -25,6 +24,7 @@ export default function ReportsContent({user}: ReportsProps) {
           .order('created_at', { ascending: false })
           .then(res => { setDataInterview(res.data as any) });
       };
+      fetchData();
     });
   console.log(dataSpeech);
   console.log(dataInterview);
