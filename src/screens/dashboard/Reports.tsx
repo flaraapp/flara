@@ -1,3 +1,5 @@
+'use client';
+
 import CardContainer from '@/components/dashboard/cards/CardContainer';
 import { client } from '@/supabase/client';
 import { UserProfile } from '@auth0/nextjs-auth0/client';
@@ -10,7 +12,6 @@ export default function ReportsContent({user}: ReportsProps) {
   const [dataSpeech, setDataSpeech] = useState([]);
   const [dataInterview, setDataInterview] = useState([]);
   useEffect(() => {
-      console.log('Fetching');
       return () => {
         client.from('speech_reports')
           .select()
