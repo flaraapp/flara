@@ -12,6 +12,7 @@ export default function ReportsContent({user}: ReportsProps) {
   const [dataSpeech, setDataSpeech] = useState([]);
   const [dataInterview, setDataInterview] = useState([]);
   useEffect(() => {
+      console.log('Fetching');
       return () => {
         client.from('speech_reports')
           .select()
