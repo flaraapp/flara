@@ -7,28 +7,26 @@ export default function HomeContent() {
         <Navbar></Navbar>
       </div>
       <div className="h-screen max-w-screen">
-          <h1 className="text-6xl md:text-7xl font-medium pt-20 mx-10 mb-16 md:mb-0">
-            Speech and Interview Prep, made <p className="w-min border-[#B2F260] border-b-8">Simple</p>
-          </h1>
-          <div className="max-w-screen overflow-x-clip absolute z-2">
+          <div className="mx-10 md:mx-20 z-2 pt-10">
             <Image
-              className="w-screen scale-[2.7] md:scale-[1.4] object-cover overflow-clip -translate-x-30 sticky"
-              layout="contain"  // or 'fill', 'contain', 'cover'
-              src='/Vectorflaraa.svg'
-              alt='Flara'
-              width={'100'}
-              height={'100'}
+              className="h-[70vh] overflow-y-hidden w-screen object-cover rounded-2xl"
+              src='/gradient.svg'
+              width={1920}
+              height={200}
+              alt="gradient"
             />
           </div>
-          <div className="max-w-screen overflow-x-clip opacity-30 md:translate-y-[10vh] translate-y-[4vh] z-1">
+          <div className="-translate-y-[120%] mx-20 md:mx-32 ">
             <Image
-              className="w-screen scale-[2.7] md:scale-[1.4] object-cover overflow-clip -translate-x-30 sticky"
-              layout="contain"  // or 'fill', 'contain', 'cover'
-              src='/Vectorflaraa.svg'
-              alt='Flara'
-              width={'100'}
-              height={'100'}
-            />
+                className="mb-5 ml-1"
+                src='/leaf.svg'
+                width={100}
+                height={100}
+                alt="gradient"
+              />
+            <h1 className="text-6xl md:text-7xl font-light mb-16 md:mb-0 ">
+              Speech and Interview Prep, made <strong>Simple</strong>
+            </h1>
           </div>
           <p className='pt-[100vh]'>flara</p>
       </div>
