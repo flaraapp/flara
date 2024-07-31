@@ -16,7 +16,7 @@ export default function HomeContent() {
               alt="gradient"
             />
           </div>
-          <div className="-translate-y-[120%] mx-20 md:mx-32 ">
+          <div className="-translate-y-[110%] md:-translate-y-[130%] mx-20 md:mx-32 ">
             <Image
                 className="mb-5 ml-1"
                 src='/leaf.svg'
@@ -24,7 +24,7 @@ export default function HomeContent() {
                 height={100}
                 alt="gradient"
               />
-            <h1 className="text-6xl md:text-7xl font-light mb-16 md:mb-0 ">
+            <h1 className="text-5xl md:text-7xl font-light mb-16 md:mb-0 ">
               Speech and Interview Prep, made <strong>Simple</strong>
             </h1>
           </div>
