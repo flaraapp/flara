@@ -88,7 +88,7 @@ export default function NavItem(item: NavItemProps) {
                 </div>
             )}
             {(isOpen && (!isMobile || item.dropdown)) && (
-                <div className="absolute z-10 bg-white shadow-md p-1 py-3 border border-gray-200">
+                <div className="absolute z-10 bg-white p-1 py-3 border border-gray-200 shadow-sm rounded-2xl">
                     {item.childrenItems.map((child, index) => (
                         <Link href={child.href!} key={index}>
                             <div className="block px-4 py-1 hover:text-gray-500 transition duration-500">

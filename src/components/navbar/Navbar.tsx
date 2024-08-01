@@ -11,7 +11,7 @@ export default function Navbar() {
     const [isOpen, setOpen] = useState(false);
     const { user, error, isLoading } = useUser();
     return (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center fixed top-0 bg-white z-10 bg-opacity-50 backdrop-blur-lg shadow-sm rounded-b-[1rem]">
             <nav className="flex justify-between w-full max-w-[1280px] h-20 items-center">
                 <div className="flex w-full px-5 justify-between items-center max-w-[1280px]">
                     <div className="select-none drag-none">

@@ -7,16 +7,11 @@ export default function HomeContent() {
         <Navbar></Navbar>
       </div>
       <div className="h-screen max-w-screen">
-          <div className="mx-10 md:mx-20 z-2 pt-10">
-            <Image
-              className="h-[70vh] overflow-y-hidden w-screen object-cover rounded-2xl"
-              src='/gradient.svg'
-              width={1920}
-              height={200}
-              alt="gradient"
-            />
+      <div className="h-[120vh] w-screen opacity-50 absolute z-[-1]" style={{
+            backgroundImage: "radial-gradient(at 84.9% 19.3%, #FC8C3C 0px, transparent 50%),radial-gradient(at 15.1% 54.5%, #4FE4C4 0px, transparent 50%),radial-gradient(at 75.4% 58.7%, #B2F260 0px, transparent 50%)",
+        }}>
           </div>
-          <div className="-translate-y-[110%] md:-translate-y-[130%] mx-20 md:mx-32 ">
+          <div className="mx-20 md:mx-32 pt-40">
             <Image
                 className="mb-5 ml-1"
                 src='/leaf.svg'
