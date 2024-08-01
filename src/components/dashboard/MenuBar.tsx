@@ -39,7 +39,7 @@ export default function MenuBar({ activePage }: MenuBarProps) {
                     isOpen={isHovered}
                     onClick={() => { }}
                     strokeWidth="1.7"
-                    height={12}
+                    height={9}
                     width={15}
                     lineProps={{ strokeLinecap: "round" }}
                     className={""}

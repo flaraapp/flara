@@ -29,7 +29,7 @@ export default function Navbar() {
       };
     }, []);
     return (
-        <div className={"w-full flex justify-center fixed top-0 z-10 transition duration-500 " + (isOpen ? "" : "bg-opacity-50 backdrop-blur-lg") + (isScrolled ? " bg-white shadow-sm" : "")}>
+        <div className={"w-full flex justify-center fixed top-0 z-10 " + (isOpen ? "bg-white" : "bg-opacity-50 backdrop-blur-lg transition duration-500 ") + (isScrolled ? " bg-white shadow-sm" : "")}>
             <nav className="flex justify-between w-full max-w-[1280px] h-20 items-center">
                 <div className="flex w-full px-5 justify-between items-center max-w-[1280px]">
                     <div className="select-none drag-none">
@@ -41,7 +41,7 @@ export default function Navbar() {
                             className="select-none drag-none"
                         />
                     </div>
-                    <div className="w-grow font-semibold gap-8 hidden md:flex">
+                    <div className="font-semibold gap-8 hidden md:flex md:ml-8">
                         <NavItem name='Product' href="/product" childrenItems={[{name:"Features", href: "/features"}, {name:"Support", href: "/support"}]}/>
                         <NavItem name='Company' href="/Company" childrenItems={[{name:"About", href: "/about"}]}/>
                         <NavItem name='Blog' href="/blog"/>
