@@ -4,14 +4,32 @@ import { useUser } from '@auth0/nextjs-auth0/client';
 import Image from "next/image";
 import Button from "../button/Button";
 import NavItem from "./NavItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavMobile from "./NavMobile";
 import { MenuButton } from "../button/MenuButton";
 export default function Navbar() {
     const [isOpen, setOpen] = useState(false);
     const { user, error, isLoading } = useUser();
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+      const handleScroll = () => {
+        if (window.scrollY > 0) {
+          setIsScrolled(true);
+        } else {
+          setIsScrolled(false);
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll);
+
+      // Cleanup the event listener on component unmount
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
     return (
-        <div className={"w-full flex justify-center fixed top-0 bg-white z-10 shadow-sm " + (isOpen ? "" : "bg-opacity-50 backdrop-blur-lg")}>
+        <div className={"w-full flex justify-center fixed top-0 z-10 transition duration-500 " + (isOpen ? "" : "bg-opacity-50 backdrop-blur-lg") + (isScrolled ? " bg-white shadow-sm" : "")}>
             <nav className="flex justify-between w-full max-w-[1280px] h-20 items-center">
                 <div className="flex w-full px-5 justify-between items-center max-w-[1280px]">
                     <div className="select-none drag-none">
@@ -31,7 +49,7 @@ export default function Navbar() {
                     <div className="gap-2 hidden md:flex">
                         <Button text="Donate" type="secondary" href="/donate"></Button>
                         {  (user) ?
-                        <Button text="Dashboard" type="primary" href="/"></Button> :
+                        <Button text="Flara" type="primary" href="/"></Button> :
                         <Button text="Login" type="primary" href="/api/auth/login"></Button>
                     }
                     </div>

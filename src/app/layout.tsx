@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <UserProvider>
-        <body className={`${hanken.variable} ${frank.variable} font-sans text-[#222222]`}>{children}</body>
+        <body className={`${hanken.variable} ${frank.variable} font-sans text-[#333333]`}>{children}</body>
       </UserProvider>
     </html>
   );

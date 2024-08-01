@@ -12,7 +12,7 @@ export default function Button(options: ButtonOptions) {
     if (options.type === "primary") {
         className += "bg-[#9aee59] hover:bg-[#6cde12] ";
     } else if (options.type === "secondary") {
-        className += "bg-[#eef2f2] hover:bg-[#d4d9d9] ";
+        className += "border-[#333333] border py-[0.45rem] hover:bg-white hover:bg-opacity-40 ";
     } else if (options.type === "danger") {
         className += "bg-[#ff5252] hover:bg-[#e64747] ";
     }
