@@ -40,7 +40,8 @@ export default function Navbar() {
                             isOpen={isOpen}
                             onClick={() => setOpen(!isOpen)}
                             strokeWidth="2"
-                            height={18}
+                            height={10}
+                            width={24}
                             lineProps={{ strokeLinecap: "round" }}
                         />
                     </div>

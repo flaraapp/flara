@@ -83,14 +83,6 @@ const MenuButton = ({
       <motion.line
         x1="0"
         x2={unitWidth}
-        y1="2"
-        y2="2"
-        variants={center}
-        {...lineProps}
-      />
-      <motion.line
-        x1="0"
-        x2={unitWidth}
         y1="4"
         y2="4"
         variants={bottom}
