@@ -8,7 +8,7 @@ export default function HomeContent() {
       </div>
       <div className="h-screen max-w-screen">
       <div className="h-[120vh] w-screen opacity-50 absolute z-[-1]" style={{
-            backgroundImage: "radial-gradient(at 84.9% 19.3%, #FC8C3C 0px, transparent 50%),radial-gradient(at 15.1% 54.5%, #4FE4C4 0px, transparent 50%),radial-gradient(at 75.4% 58.7%, #B2F260 0px, transparent 50%)",
+            backgroundImage: "radial-gradient(at 84.9% 25.3%, #FC8C3C 0px, transparent 50%),radial-gradient(at 15.1% 57.5%, #4FE4C4 0px, transparent 50%),radial-gradient(at 65.4% 59.7%, #B2F260 0px, transparent 50%)",
         }}>
           </div>
           <div className="mx-20 md:mx-32 pt-40">
