@@ -57,25 +57,23 @@ export default function HomeContent() {
               <div className="border py-1 px-4 rounded-full text-xl text-gray-500">FEATURES & TOOLS</div>
             </div>
             <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Practice speaking and gain valuable feedback.</div>
-            <div className="grid md:grid-cols-2 mx-12 md:mx-[5%] gap-8 md:gap-0 mt-16">
+            <div className="grid md:grid-cols-2 mx-5 md:mx-[5%] gap-8 md:gap-0 mt-16">
               <div className="flex justify-center items-center">
                 <Link href='#speech'>
-                <Image
+                <img
                   className="rounded-3xl border hover:scale-105 transition duration-500 drag-none"
                   src={'speech.svg'}
                   alt="speech"
                   width={500}
-                  unoptimized={true}
                   height={500}
                 />
                 </Link>
               </div>
               <div className="flex justify-center items-center">
-                <Image
+                <img
                   className="rounded-3xl border hover:scale-105 transition duration-500 drag-none"
                   src={'interview.svg'}
                   alt="interview"
-                  unoptimized={true}
                   width={500}
                   height={500}
                 />
@@ -91,11 +89,10 @@ export default function HomeContent() {
             <div className=" text-lg md:text-2xl font-light">Use accurate transcriptions to identify points of improvement.</div>
             <div className="mt-10 grid md:grid-cols-2 md:gap-20 gap-8">
               <div className="flex items-center justify-center md:order-2">
-                <Image
+                <img
                       className="rounded-3xl transition duration-500 drag-none flex justify-center"
                       src={'speech_real.svg'}
                       alt="Speech Preview"
-                      unoptimized={true}
                       width={500}
                       height={700}
                     />
