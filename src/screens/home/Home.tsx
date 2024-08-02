@@ -59,6 +59,7 @@ export default function HomeContent() {
             <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Practice speaking and gain valuable feedback.</div>
             <div className="grid md:grid-cols-2 mx-12 md:mx-[5%] gap-8 md:gap-0 mt-16">
               <div className="flex justify-center items-center">
+                <Link href='#speech'>
                 <Image
                   className="rounded-3xl border hover:scale-105 transition duration-500 drag-none"
                   src={'speech.svg'}
@@ -67,6 +68,7 @@ export default function HomeContent() {
                   unoptimized={true}
                   height={500}
                 />
+                </Link>
               </div>
               <div className="flex justify-center items-center">
                 <Image
@@ -80,13 +82,36 @@ export default function HomeContent() {
               </div>
             </div>
           </div>
-          <div className="bg-[#33333308] h-60 w-screen px-5 md:px-16 ">
+          <div className="bg-[#33333308] w-screen px-5 md:px-16 pb-8 md:pb-20" id="speech">
             <div className="text-center flex pt-8 md:pt-20">
               <div className="border py-1 px-4 rounded-full text-xl text-gray-500 bg-white">SPEECH PRACTICE</div>
             </div>
             <div className="text-3xl md:text-5xl mt-4">Gain confidence and clarity</div>
             <div className="mt-4 md:text-2xl text-lg font-light">Flara helps you prepare for talks and speeches by providing constructive feedback.</div>
             <div className=" text-lg md:text-2xl font-light">Use accurate transcriptions to identify points of improvement.</div>
+            <div className="mt-10 grid md:grid-cols-2 md:gap-20 gap-8">
+              <div className="flex items-center justify-center md:order-2">
+                <Image
+                      className="rounded-3xl transition duration-500 drag-none flex justify-center"
+                      src={'speech_real.svg'}
+                      alt="Speech Preview"
+                      unoptimized={true}
+                      width={500}
+                      height={700}
+                    />
+              </div>
+              <div className="md:text-xl font-light h-full md:mt-20 ">
+                <div className="border-b py-4">
+                  Identify use of stutter words and their frequency within the speech to increase clarity and improve delivery.
+                </div>
+                <div className="border-b py-4 ">
+                  Recieve a score of developing, or competent, or outstanding to quantify your progress and growth with each practice.
+                </div>
+                <div className="py-4">
+                  View an accurate transcription of your speech with timestamps along with your personalized feedback and critique.
+                </div>
+              </div>
+            </div>
           </div>
       </div>
     </main>

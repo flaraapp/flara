@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <UserProvider>
         <body className={`${hanken.variable} ${frank.variable} font-sans text-[#333333]`}>{children}</body>
       </UserProvider>
