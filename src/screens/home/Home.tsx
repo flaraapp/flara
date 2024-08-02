@@ -63,8 +63,8 @@ export default function HomeContent() {
                   className="rounded-3xl border hover:scale-105 transition duration-500"
                   src={'speech.svg'}
                   alt="speech"
-                  width={450}
-                  height={450}
+                  width={1000}
+                  height={1000}
                 />
               </div>
               <div className="flex justify-center items-center">
@@ -72,8 +72,8 @@ export default function HomeContent() {
                   className="rounded-3xl border hover:scale-105 transition duration-500"
                   src={'interview.svg'}
                   alt="interview"
-                  width={450}
-                  height={450}
+                  width={1000}
+                  height={1000}
                 />
               </div>
             </div>
