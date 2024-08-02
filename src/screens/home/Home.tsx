@@ -52,33 +52,41 @@ export default function HomeContent() {
               </div>
             </div>
           </div>
-          <div className="mt-10 pb-40">
+          <div className="mt-10 pb-32">
             <div className="text-center flex justify-center">
               <div className="border py-1 px-4 rounded-full text-xl text-gray-500">FEATURES & TOOLS</div>
             </div>
             <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Practice speaking and gain valuable feedback.</div>
-            <div className="grid md:grid-cols-2 mx-12 md:mx-[5%] gap-8 mt-16">
+            <div className="grid md:grid-cols-2 mx-12 md:mx-[5%] gap-8 md:gap-0 mt-16">
               <div className="flex justify-center items-center">
                 <Image
-                  className="rounded-3xl border hover:scale-105 transition duration-500"
+                  className="rounded-3xl border hover:scale-105 transition duration-500 drag-none"
                   src={'speech.svg'}
                   alt="speech"
-                  width={450}
+                  width={500}
                   unoptimized={true}
-                  height={450}
+                  height={500}
                 />
               </div>
               <div className="flex justify-center items-center">
                 <Image
-                  className="rounded-3xl border hover:scale-105 transition duration-500"
+                  className="rounded-3xl border hover:scale-105 transition duration-500 drag-none"
                   src={'interview.svg'}
                   alt="interview"
                   unoptimized={true}
-                  width={450}
-                  height={450}
+                  width={500}
+                  height={500}
                 />
               </div>
             </div>
+          </div>
+          <div className="bg-[#33333308] h-60 w-screen px-5 md:px-16 ">
+            <div className="text-center flex pt-8 md:pt-20">
+              <div className="border py-1 px-4 rounded-full text-xl text-gray-500 bg-white">SPEECH PRACTICE</div>
+            </div>
+            <div className="text-3xl md:text-5xl mt-4">Gain confidence and clarity</div>
+            <div className="mt-4 md:text-2xl text-lg font-light">Flara helps you prepare for talks and speeches by providing constructive feedback.</div>
+            <div className=" text-lg md:text-2xl font-light">Use accurate transcriptions to identify points of improvement.</div>
           </div>
       </div>
     </main>
@@ -94,7 +102,7 @@ const AnimatedLink = () => {
       animate="initial"
     >
       <Link href="/api/auth/login" className="text-lg flex gap-2 items-center mt-6 transition duration-500">
-        Get Started <FiArrowUpRight className="animate animate-pulse" />
+        Get started for free<FiArrowUpRight className="animate animate-pulse" />
       </Link>
       <motion.div
         className="h-0.5 bg-[#333333] mt-1"
