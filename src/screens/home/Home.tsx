@@ -57,23 +57,24 @@ export default function HomeContent() {
               <div className="border py-1 px-4 rounded-full text-xl text-gray-500">FEATURES & TOOLS</div>
             </div>
             <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Practice speaking and gain valuable feedback.</div>
-            <div className="grid md:grid-cols-2 grid-cols-1 mx-12 md:mx-[10%] gap-8 mt-16">
-            <div className="w-full border rounded-3xl h-80 bg-[#B2F260] overflow-hidden flex justify-center items-end hover:scale-105 relative">
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-10 scale-[1.2]">
-                  <Image
-                    className="shadow-2xl scale-125"
-                    src={'speech.svg'}
-                    alt="speech"
-                    width={450}
-                    height={450}
-                  />
-                </div>
-                <div className="relative bg-white w-[200%] h-16 text-3xl -ml-[30%] pl-[36%] lg:pl-[32%] pt-3 border-t z-20">
-                  Speech
-                </div>
+            <div className="grid md:grid-cols-2 mx-12 md:mx-[5%] gap-8 mt-16">
+              <div className="flex justify-center items-center">
+                <Image
+                  className="rounded-3xl border hover:scale-105 transition duration-500"
+                  src={'speech.svg'}
+                  alt="speech"
+                  width={450}
+                  height={450}
+                />
               </div>
-              <div className="w-full border rounded-3xl h-80">
-
+              <div className="flex justify-center items-center">
+                <Image
+                  className="rounded-3xl border hover:scale-105 transition duration-500"
+                  src={'interview.svg'}
+                  alt="interview"
+                  width={450}
+                  height={450}
+                />
               </div>
             </div>
           </div>
