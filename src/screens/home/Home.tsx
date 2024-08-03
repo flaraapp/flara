@@ -52,7 +52,7 @@ export default function HomeContent() {
               </div>
             </div>
           </div>
-          <div className="mt-10 pb-32">
+          <div className="mt-10 pb-20 md:pb-32">
             <div className="text-center flex justify-center">
               <div className="border py-1 px-4 rounded-full text-xl text-gray-500">FEATURES & TOOLS</div>
             </div>
