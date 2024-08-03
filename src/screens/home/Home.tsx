@@ -60,9 +60,9 @@ export default function HomeContent() {
             <div className="grid md:grid-cols-2 mx-5 md:mx-[5%] gap-8 md:gap-0 mt-16">
               <div className="flex justify-center items-center">
                 <Link href='#speech'>
-                <img
+                <Image
                   className="rounded-3xl border hover:scale-105 transition duration-500 drag-none"
-                  src={'speech.svg'}
+                  src={'/speech.png'}
                   alt="speech"
                   width={500}
                   height={500}
@@ -70,13 +70,15 @@ export default function HomeContent() {
                 </Link>
               </div>
               <div className="flex justify-center items-center">
-                <img
+                <Link href='#interview'>
+                <Image
                   className="rounded-3xl border hover:scale-105 transition duration-500 drag-none"
-                  src={'interview.svg'}
+                  src={'/interview.png'}
                   alt="interview"
                   width={500}
                   height={500}
                 />
+                </Link>
               </div>
             </div>
           </div>
@@ -87,11 +89,11 @@ export default function HomeContent() {
             <div className="text-3xl md:text-5xl mt-4">Gain confidence and clarity</div>
             <div className="mt-4 md:text-2xl text-lg font-light">Flara helps you prepare for talks and speeches by providing constructive feedback.</div>
             <div className=" text-lg md:text-2xl font-light">Use accurate transcriptions to identify points of improvement.</div>
-            <div className="mt-10 grid md:grid-cols-2 md:gap-20 gap-8">
-              <div className="flex items-center justify-center md:order-2">
-                <img
+            <div className="mt-10 grid md:grid-cols-2 md:gap-0 gap-8">
+              <div className="flex items-center justify-center md:justify-end md:order-2">
+                <Image
                       className="rounded-3xl transition duration-500 drag-none flex justify-center"
-                      src={'speech_real.svg'}
+                      src={'/speech_real.png'}
                       alt="Speech Preview"
                       width={500}
                       height={700}
@@ -109,6 +111,43 @@ export default function HomeContent() {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="bg-[#33333308] w-screen px-5 md:px-16 pb-16 md:pb-32" id="interview">
+            <div className="text-center flex pt-8 md:pt-20">
+              <div className="border py-1 px-4 rounded-full text-xl text-gray-500 bg-white">INTERVIEW PREP</div>
+            </div>
+            <div className="text-3xl md:text-5xl mt-4">Practice realistic interview questions</div>
+            <div className="mt-4 md:text-2xl text-lg font-light">A personalized interview coach for a specific job or position.</div>
+            <div className=" text-lg md:text-2xl font-light">Answer a variety of realistic questions verbally.</div>
+            <div className="mt-10 grid md:grid-cols-2 md:gap-0 gap-8">
+              <div className="flex justify-center md:justify-start">
+                <Image
+                      className="rounded-3xl transition duration-500 drag-none flex justify-center"
+                      src={'/interview_real.png'}
+                      alt="Interview Preview"
+                      width={500}
+                      height={700}
+                    />
+              </div>
+              <div className="md:text-xl font-light h-full md:mt-20 ">
+                <div className="border-b py-4">
+                  Record your response per question, move at your own pace while maintaining consistency an active interview environment.
+                </div>
+                <div className="border-b py-4 ">
+                  Interview trials are based on the job or position context you provide, ensuring a realistic and personalized experience.
+                </div>
+                <div className="py-4">
+                  Responses are transcribed and saved for future reference, allowing you to track your progress and growth over time.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="w-screen h-screen bg-[#222222] text-neutral-100">
+            <div className="text-center flex justify-center pt-8 md:pt-20">
+              <div className="border border-[#434442] py-1 px-4 rounded-full text-xl text-neutral-100 bg-[#333431]">ACCESSIBILITY</div>
+            </div>
+            <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Free for individuals, with generous limits.</div>
+            <div className="text-center text-xl md:text-3xl mt-2 mx-5 font-light">And even more for non-profit organizations.</div>
           </div>
       </div>
     </main>
