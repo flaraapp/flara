@@ -45,7 +45,7 @@ export default function HomeContent() {
             <h1 className="text-5xl md:text-7xl font-light ">
               Speech and Interview Prep, made <strong>Simple</strong>
             </h1>
-            <div className="w-full flex justify-end pt-20 pr-20 ">
+            <div className="w-full flex md:justify-end pt-20 pr-20 ">
               <div className="text-2xl font-light w-[16rem] ml-1 md:ml-0">
                 <p>Accessible growth with Flara, powered by AI</p>
                 <AnimatedLink/>
