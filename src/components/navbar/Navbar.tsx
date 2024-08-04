@@ -32,7 +32,7 @@ export default function Navbar() {
         <div className={"w-full flex justify-center fixed top-0 z-10 " + (isOpen ? "bg-white" : "bg-opacity-50 backdrop-blur-lg transition duration-500 ") + (isScrolled ? " bg-white shadow-sm" : "")}>
             <nav className="flex justify-between w-full max-w-[1280px] h-20 items-center">
                 <div className="flex w-full px-5 justify-between items-center max-w-[1280px]">
-                    <div className="select-none drag-none border">
+                    <div className="select-none drag-none">
                         <Image
                             src={"flara.svg"}
                             alt={"Flara"}
@@ -46,7 +46,7 @@ export default function Navbar() {
                         <NavItem name='Company' href="/Company" childrenItems={[{name:"About", href: "/about"}]}/>
                         <NavItem name='Blog' href="/blog"/>
                     </div>
-                    <div className="gap-2 hidden md:flex border">
+                    <div className="gap-2 hidden md:flex">
                         <Button text="Contact" type="secondary" href="/contact"></Button>
                         {  (user) ?
                         <Button text="Dashboard" type="primary" href="/"></Button> :
