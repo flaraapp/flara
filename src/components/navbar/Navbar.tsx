@@ -32,7 +32,7 @@ export default function Navbar() {
         <div className={"w-full flex justify-center fixed top-0 z-10 " + (isOpen ? "bg-white" : "bg-opacity-50 backdrop-blur-lg transition duration-500 ") + (isScrolled ? " bg-white shadow-sm" : "")}>
             <nav className="flex justify-between w-full max-w-[1280px] h-20 items-center">
                 <div className="flex w-full px-5 justify-between items-center max-w-[1280px]">
-                    <div className="select-none drag-none">
+                    <div className="select-none drag-none border">
                         <Image
                             src={"flara.svg"}
                             alt={"Flara"}
@@ -41,15 +41,15 @@ export default function Navbar() {
                             className="select-none drag-none"
                         />
                     </div>
-                    <div className="font-semibold gap-8 hidden md:flex md:ml-8">
+                    <div className={"font-semibold gap-8 hidden md:flex md:ml-8" + ((user) ? " md:ml-20": "")}>
                         <NavItem name='Product' href="/product" childrenItems={[{name:"Features", href: "/features"}, {name:"Support", href: "/support"}]}/>
                         <NavItem name='Company' href="/Company" childrenItems={[{name:"About", href: "/about"}]}/>
                         <NavItem name='Blog' href="/blog"/>
                     </div>
-                    <div className="gap-2 hidden md:flex">
-                        <Button text="Donate" type="secondary" href="/donate"></Button>
+                    <div className="gap-2 hidden md:flex border">
+                        <Button text="Contact" type="secondary" href="/contact"></Button>
                         {  (user) ?
-                        <Button text="Flara" type="primary" href="/"></Button> :
+                        <Button text="Dashboard" type="primary" href="/"></Button> :
                         <Button text="Login" type="primary" href="/api/auth/login"></Button>
                     }
                     </div>

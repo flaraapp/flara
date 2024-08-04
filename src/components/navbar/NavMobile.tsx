@@ -32,7 +32,7 @@ export default function NavMobile(props: NavMobileProps) {
                     <NavItem name='Blog' href="/blog"/>
                 </div>
                 <div className="gap-2 grid grid-rows-2">
-                    <Button text="Donate" type="secondary" href="/donate"></Button>
+                    <Button text="Contact" type="secondary" href="/contact"></Button>
                     {  (user) ?
                         <Button text="Dashboard" type="primary" href="/"></Button> :
                         <Button text="Login" type="primary" href="/api/auth/login"></Button>
