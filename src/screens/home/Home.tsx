@@ -150,27 +150,27 @@ export default function HomeContent() {
             <div className="text-center text-xl md:text-3xl mt-2 mx-5 font-light">Recieve and view feedback within minutes.</div>
             <div className="grid md:grid-cols-3 md:grid-rows-2 grid-cols-1 grid-rows-6 mx-5 md:mx-16 mt-16 md:gap-10 gap-6 font-light">
               <div className="flex text-lg">
-                <div className="font-mono font-light rounded-full border min-w-16 max-h-16 flex items-center justify-center text-xl mr-5">01</div>
+                <div className="text-gray-500 font-light rounded-full border min-w-16 max-h-16 flex items-center justify-center text-xl mr-5">01</div>
                 <div>Create an account or login to Flara using sign-in providers.</div>
               </div>
               <div className="flex text-lg">
-                <div className="font-mono font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">02</div>
+                <div className="text-gray-500 font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">02</div>
                 <div>Allow Flara permission to your device&apos;s microphone when prompted.</div>
               </div>
               <div className="flex text-lg">
-                <div className="font-mono font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">03</div>
+                <div className="text-gray-500 font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">03</div>
                 <div>Record a speech in the Speech Tab and provide context.</div>
               </div>
               <div className="flex text-lg">
-                <div className="font-mono font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">04</div>
+                <div className="text-gray-500 font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">04</div>
                 <div>Practice an interview in the Interview Tab by providing a job description.</div>
               </div>
               <div className="flex text-lg">
-                <div className="font-mono font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">05</div>
+                <div className="text-gray-500 font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">05</div>
                 <div>Record your response for each interview question to be graded.</div>
               </div>
               <div className="flex text-lg">
-                <div className="font-mono font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">06</div>
+                <div className="text-gray-500 font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">06</div>
                 <div>Flara will process your responses and you can view the reports in Reports.</div>
               </div>
             </div>
