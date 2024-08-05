@@ -148,7 +148,7 @@ export default function HomeContent() {
             </div>
             <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Get started in just a few easy steps.</div>
             <div className="text-center text-xl md:text-3xl mt-2 mx-5 font-light">Recieve and view feedback within minutes.</div>
-            <div className="grid md:grid-cols-3 md:grid-rows-2 grid-cols-1 grid-rows-6 mx-5 md:mx-16 mt-16 md:gap-10 gap-6">
+            <div className="grid md:grid-cols-3 md:grid-rows-2 grid-cols-1 grid-rows-6 mx-5 md:mx-16 mt-16 md:gap-10 gap-6 font-light">
               <div className="flex text-lg">
                 <div className="font-mono font-light rounded-full border min-w-16 max-h-16 flex items-center justify-center text-xl mr-5">01</div>
                 <div>Create an account or login to Flara using sign-in providers.</div>
@@ -207,9 +207,9 @@ export default function HomeContent() {
                   <div className="mt-12">
                     <div className="text-5xl text-center">$0</div>
                     <div className="text-center text-gray-400 text-xl mt-2">600 credits daily</div>
-                    <div className="text-center mx-8 mt-10">Daily allowance of 600 credits.</div>
-                    <div className="text-center mx-8 mt-4">Resets every 24 hours.</div>
-                    <div className="text-center mx-8 mt-4">Multiple speeches and interviews daily.</div>
+                    <div className="text-center mx-8 mt-10 font-light">Daily allowance of 600 credits.</div>
+                    <div className="text-center mx-8 mt-4 font-light">Resets every 24 hours.</div>
+                    <div className="text-center mx-8 mt-4 font-light">Multiple speeches and interviews daily.</div>
                   </div>
                 </div>
                 <div className="absolute bottom-0 mb-5 flex w-full px-5">
@@ -225,9 +225,9 @@ export default function HomeContent() {
                   <div className="mt-12">
                     <div className="text-5xl text-center">$0.05</div>
                     <div className="text-center text-gray-400 text-xl mt-2">per credit</div>
-                    <div className="text-center mx-8 mt-10">In addition to the daily 600 credits.</div>
-                    <div className="text-center mx-8 mt-4">Always valid for interviews or speeches.</div>
-                    <div className="text-center mx-8 mt-4">Also available in credit bundles.</div>
+                    <div className="text-center mx-8 mt-10 font-light">In addition to the daily 600 credits.</div>
+                    <div className="text-center mx-8 mt-4 font-light">Always valid for interviews or speeches.</div>
+                    <div className="text-center mx-8 mt-4 font-light">Also available in credit bundles.</div>
                   </div>
                 </div>
                 <div className="absolute bottom-0 mb-5 flex w-full px-5">
@@ -243,9 +243,9 @@ export default function HomeContent() {
                   <div className="mt-12">
                     <div className="text-5xl text-center">$0-100</div>
                     <div className="text-center text-gray-400 text-xl mt-2">1.2-5k credits daily</div>
-                    <div className="text-center mx-8 mt-10">Customizable daily allowance.</div>
-                    <div className="text-center mx-8 mt-4">Basic organization plan free for NPO&apos;s.</div>
-                    <div className="text-center mx-8 mt-4">Multiple speeches and interviews daily.</div>
+                    <div className="text-center mx-8 mt-10 font-light">Customizable daily allowance.</div>
+                    <div className="text-center mx-8 mt-4 font-light">Basic organization plan free for NPO&apos;s.</div>
+                    <div className="text-center mx-8 mt-4 font-light">Multiple speeches and interviews daily.</div>
                   </div>
                 </div>
                 <div className="absolute bottom-0 mb-5 flex w-full px-5">

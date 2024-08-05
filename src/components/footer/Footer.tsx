@@ -5,12 +5,12 @@ import Image from "next/image";
 export default function Footer() {
     return (
         <div>
-            <footer className="bg-white p-4 text-center h-60 relative">
-                <div className="grid md:grid-cols-2">
+            <footer className="bg-white p-4 text-center h-80 md:h-60 relative">
+                <div className="grid md:grid-cols-2 mx-5 mt-5">
                     <div>
                         <Image src="/flara.svg" alt="Flara" width={135} height={50} />
                     </div>
-                    <div className="">
+                    <div className="text-left mt-10 text-2xl md:mt-0">
                         <Link href="/about">
                             <p className="mx-2">About</p>
                         </Link>
