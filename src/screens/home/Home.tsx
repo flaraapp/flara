@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FiArrowUpRight } from "react-icons/fi";
-
+import Footer from "@/components/footer/Footer";
 
 export default function HomeContent() {
   const [viewHeight, setViewHeight] = useState(0);
@@ -142,14 +142,120 @@ export default function HomeContent() {
               </div>
             </div>
           </div>
-          <div className="w-screen h-screen bg-[#222222] text-neutral-100">
-            <div className="text-center flex justify-center pt-8 md:pt-20">
-              <div className="border border-[#434442] py-1 px-4 rounded-full text-xl text-neutral-100 bg-[#333431]">ACCESSIBILITY</div>
+          <div className="w-screen py-8 md:py-20 pb-20 md:pb-32">
+          <div className="text-center flex justify-center">
+              <div className="border py-1 px-4 rounded-full text-xl text-gray-500">EASY TO USE</div>
             </div>
-            <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Free for individuals, with generous limits.</div>
+            <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Get started in just a few easy steps.</div>
+            <div className="text-center text-xl md:text-3xl mt-2 mx-5 font-light">Recieve and view feedback within minutes.</div>
+            <div className="grid md:grid-cols-3 md:grid-rows-2 grid-cols-1 grid-rows-6 mx-5 md:mx-16 mt-16 md:gap-10 gap-6">
+              <div className="flex text-lg">
+                <div className="font-mono font-light rounded-full border min-w-16 max-h-16 flex items-center justify-center text-xl mr-5">01</div>
+                <div>Create an account or login to Flara using sign-in providers.</div>
+              </div>
+              <div className="flex text-lg">
+                <div className="font-mono font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">02</div>
+                <div>Allow Flara permission to your device&apos;s microphone when prompted.</div>
+              </div>
+              <div className="flex text-lg">
+                <div className="font-mono font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">03</div>
+                <div>Record a speech in the Speech Tab and provide context.</div>
+              </div>
+              <div className="flex text-lg">
+                <div className="font-mono font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">04</div>
+                <div>Practice an interview in the Interview Tab by providing a job description.</div>
+              </div>
+              <div className="flex text-lg">
+                <div className="font-mono font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">05</div>
+                <div>Record your response for each interview question to be graded.</div>
+              </div>
+              <div className="flex text-lg">
+                <div className="font-mono font-light rounded-full border min-w-16 h-16 flex items-center justify-center text-xl mr-5">06</div>
+                <div>Flara will process your responses and you can view the reports in Reports.</div>
+              </div>
+            </div>
+          </div>
+          <div className="w-screen bg-[#222222] text-neutral-100 md:pb-32 pb-16">
+            <div className="text-center flex justify-center pt-8 md:pt-20">
+              <div className="border border-[#434442] py-1 px-4 rounded-full text-xl text-neutral-100 bg-[#333431]">PRICING</div>
+            </div>
+            <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Free to start, with generous limits.</div>
             <div className="text-center text-xl md:text-3xl mt-2 mx-5 font-light">And even more for non-profit organizations.</div>
+            <div className="flex items-center justify-center">
+              <div className="md:flex items-center justify-center gap-10 pt-10">
+                <div className="flex border-[#434442] border rounded-3xl h-16 w-[20rem] overflow-hidden mb-8 md:mb-0">
+                  <div className="bg-[#333431]  min-w-32 flex justify-center items-center text-2xl">100
+                    <span className="text-sm text-gray-400 pt-1.5 ml-0.5">credits</span>
+                  </div>
+                  <div className="flex items-center justify-center w-full">Speech Trial</div>
+                </div>
+                <div className="flex border-[#434442] border rounded-3xl h-16 w-[20rem] overflow-hidden">
+                  <div className="bg-[#333431] min-w-32 flex justify-center items-center text-2xl">300
+                    <span className="text-sm text-gray-400 pt-1.5 ml-0.5">credits</span>
+                  </div>
+                  <div className="flex items-center justify-center w-full">Interview Practice</div>
+                </div>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-3 md:mx-16 mx-5 gap-8 md:gap-16 mt-16">
+              <div className="h-[500px] border border-[#434442] rounded-3xl overflow-hidden relative">
+                <div className="bg-[#333431] px-4 py-3">
+                  <div className="text-3xl">Starter</div>
+                  <div className="text-xl text-gray-400 font-light">Get started for free.</div>
+                </div>
+                <div>
+                  <div className="mt-12">
+                    <div className="text-5xl text-center">$0</div>
+                    <div className="text-center text-gray-400 text-xl mt-2">600 credits daily</div>
+                    <div className="text-center mx-8 mt-10">Daily allowance of 600 credits.</div>
+                    <div className="text-center mx-8 mt-4">Resets every 24 hours.</div>
+                    <div className="text-center mx-8 mt-4">Multiple speeches and interviews daily.</div>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 mb-5 flex w-full px-5">
+                  <div className="min-w-full bg-[#333431] h-12 rounded-xl flex items-center justify-center text-xl hover:scale-105 transition duration-500 cursor-pointer">Get Started</div>
+                </div>
+              </div>
+              <div className="h-[500px] border border-[#434442] rounded-3xl overflow-hidden relative">
+                <div className="bg-[#333431] px-4 py-3">
+                  <div className="text-3xl">Plus</div>
+                  <div className="text-xl text-gray-400 font-light">Purchase more credits.</div>
+                </div>
+                <div>
+                  <div className="mt-12">
+                    <div className="text-5xl text-center">$0.05</div>
+                    <div className="text-center text-gray-400 text-xl mt-2">per credit</div>
+                    <div className="text-center mx-8 mt-10">In addition to the daily 600 credits.</div>
+                    <div className="text-center mx-8 mt-4">Always valid for interviews or speeches.</div>
+                    <div className="text-center mx-8 mt-4">Also available in credit bundles.</div>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 mb-5 flex w-full px-5">
+                  <div className="min-w-full bg-[#333431] h-12 rounded-xl flex items-center justify-center text-xl hover:scale-105 transition duration-500 cursor-pointer">Purchase</div>
+                </div>
+              </div>
+              <div className="h-[500px] border border-[#434442] rounded-3xl overflow-hidden relative">
+                <div className="bg-[#333431] px-4 py-3">
+                  <div className="text-3xl">Organization</div>
+                  <div className="text-xl text-gray-400 font-light">For non-profits and organizations.</div>
+                </div>
+                <div>
+                  <div className="mt-12">
+                    <div className="text-5xl text-center">$0-100</div>
+                    <div className="text-center text-gray-400 text-xl mt-2">1.2-5k credits daily</div>
+                    <div className="text-center mx-8 mt-10">Customizable daily allowance.</div>
+                    <div className="text-center mx-8 mt-4">Basic organization plan free for NPO&apos;s.</div>
+                    <div className="text-center mx-8 mt-4">Multiple speeches and interviews daily.</div>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 mb-5 flex w-full px-5">
+                  <div className="min-w-full bg-[#333431] h-12 rounded-xl flex items-center justify-center text-xl hover:scale-105 transition duration-500 cursor-pointer">Contact</div>
+                </div>
+              </div>
+            </div>
           </div>
       </div>
+      <Footer />
     </main>
   );
 }
