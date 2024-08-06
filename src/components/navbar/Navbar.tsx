@@ -7,6 +7,7 @@ import NavItem from "./NavItem";
 import { useEffect, useState } from "react";
 import NavMobile from "./NavMobile";
 import { MenuButton } from "../button/MenuButton";
+import Link from 'next/link';
 export default function Navbar() {
     const [isOpen, setOpen] = useState(false);
     const { user, error, isLoading } = useUser();
@@ -33,6 +34,7 @@ export default function Navbar() {
             <nav className="flex justify-between w-full max-w-[1280px] h-20 items-center">
                 <div className="flex w-full px-5 justify-between items-center max-w-[1280px]">
                     <div className="select-none drag-none">
+                        <Link href='/'>
                         <Image
                             src={"flara.svg"}
                             alt={"Flara"}
@@ -40,6 +42,7 @@ export default function Navbar() {
                             height={50}
                             className="select-none drag-none"
                         />
+                        </Link>
                     </div>
                     <div className={"font-semibold gap-8 hidden md:flex md:ml-8" + ((user) ? " md:ml-20": "")}>
                         <NavItem name='Product' href="/product" childrenItems={[{name:"Features", href: "/features"}, {name:"Support", href: "/support"}]}/>

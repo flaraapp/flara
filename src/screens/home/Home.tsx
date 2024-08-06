@@ -8,22 +8,6 @@ import { FiArrowUpRight } from "react-icons/fi";
 import Footer from "@/components/footer/Footer";
 
 export default function HomeContent() {
-  const [viewHeight, setViewHeight] = useState(0);
-
-  useEffect(() => {
-    // Update the view height state with the current window inner height
-    setViewHeight(window.innerHeight);
-
-    // Optionally, add an event listener to update the height on resize
-    const handleResize = () => {
-      if (window.innerHeight - viewHeight > 50 || window.innerHeight - viewHeight < -50)
-        setViewHeight(window.innerHeight);
-    }
-    window.addEventListener('resize', handleResize);
-
-    // Cleanup the event listener on component unmount
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
   return (
     <main className="flex-row text-[#333333] z-0">
       <div className="flex w-full h-full justify-center">
@@ -56,7 +40,7 @@ export default function HomeContent() {
             <div className="text-center flex justify-center">
               <div className="border py-1 px-4 rounded-full text-xl text-gray-500">FEATURES & TOOLS</div>
             </div>
-            <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Practice speaking and gain valuable feedback.</div>
+            <div className="text-center text-3xl md:text-5xl mt-5 mx-5">Practice speaking and gain valuable feedback.</div>
             <div className="grid md:grid-cols-2 mx-5 md:mx-[5%] gap-8 md:gap-0 mt-16">
               <div className="flex justify-center items-center">
                 <Link href='#speech'>
@@ -146,7 +130,7 @@ export default function HomeContent() {
           <div className="text-center flex justify-center">
               <div className="border py-1 px-4 rounded-full text-xl text-gray-500">EASY TO USE</div>
             </div>
-            <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Get started in just a few easy steps.</div>
+            <div className="text-center text-3xl md:text-5xl mt-5 mx-5">Get started in just a few easy steps.</div>
             <div className="text-center text-xl md:text-3xl mt-2 mx-5 font-light">Recieve and view feedback within minutes.</div>
             <div className="grid md:grid-cols-3 md:grid-rows-2 grid-cols-1 grid-rows-6 mx-5 md:mx-16 mt-16 md:gap-10 gap-6 font-light">
               <div className="flex text-lg">
@@ -179,19 +163,19 @@ export default function HomeContent() {
             <div className="text-center flex justify-center pt-8 md:pt-20">
               <div className="border border-[#434442] py-1 px-4 rounded-full text-xl text-neutral-100 bg-[#333431]">PRICING</div>
             </div>
-            <div className="text-center text-3xl md:text-5xl mt-7 mx-5">Free to start, with generous limits.</div>
+            <div className="text-center text-3xl md:text-5xl mt-5 mx-5">Free to start, with generous limits.</div>
             <div className="text-center text-xl md:text-3xl mt-2 mx-5 font-light">And even more for non-profit organizations.</div>
             <div className="flex items-center justify-center">
               <div className="md:flex items-center justify-center gap-10 pt-10">
-                <div className="flex border-[#434442] border rounded-3xl h-16 w-[20rem] overflow-hidden mb-8 md:mb-0">
-                  <div className="bg-[#333431]  min-w-32 flex justify-center items-center text-2xl">100
-                    <span className="text-sm text-gray-400 pt-1.5 ml-0.5">credits</span>
+                <div className="flex border-[#B2F260] border rounded-3xl h-16 w-[20rem] overflow-hidden mb-8 md:mb-0">
+                  <div className="bg-[#B2F260] text-[#333333] min-w-32 flex justify-center items-center text-2xl">100
+                    <span className="text-sm text-gray-500 pt-1.5 ml-0.5">credits</span>
                   </div>
                   <div className="flex items-center justify-center w-full">Speech Trial</div>
                 </div>
-                <div className="flex border-[#434442] border rounded-3xl h-16 w-[20rem] overflow-hidden">
-                  <div className="bg-[#333431] min-w-32 flex justify-center items-center text-2xl">300
-                    <span className="text-sm text-gray-400 pt-1.5 ml-0.5">credits</span>
+                <div className="flex border-[#4FE4C4] border rounded-3xl h-16 w-[20rem] overflow-hidden">
+                  <div className="bg-[#4FE4C4] min-w-32 text-[#333333] flex justify-center items-center text-2xl">300
+                    <span className="text-sm text-gray-500 pt-1.5 ml-0.5">credits</span>
                   </div>
                   <div className="flex items-center justify-center w-full">Interview Practice</div>
                 </div>
@@ -216,10 +200,13 @@ export default function HomeContent() {
                   <div className="min-w-full bg-[#333431] h-12 rounded-xl flex items-center justify-center text-xl hover:scale-105 transition duration-500 cursor-pointer">Get Started</div>
                 </div>
               </div>
-              <div className="h-[500px] border border-[#434442] rounded-3xl overflow-hidden relative">
-                <div className="bg-[#333431] px-4 py-3">
-                  <div className="text-3xl">Plus</div>
-                  <div className="text-xl text-gray-400 font-light">Purchase more credits.</div>
+              <div className="h-[500px] ring-4 ring-[#FC8C3C] relative rounded-3xl overflow-hidden">
+                <div className="bg-[#333431]">
+                  <div className="flex justify-between">
+                    <div className="text-3xl px-4 pt-3">Plus</div>
+                    <div className="font-light bg-[#FC8C3C] p-3 rounded-bl-3xl absolute top-0 right-0">SUGGESTED</div>
+                  </div>
+                  <div className="text-xl text-gray-400 font-light px-4 pb-3">Purchase more credits.</div>
                 </div>
                 <div>
                   <div className="mt-12">
