@@ -31,8 +31,8 @@ export default function Navbar() {
     }, []);
     return (
         <div className={"w-full flex justify-center fixed top-0 z-10 " + (isOpen ? "bg-white" : "bg-opacity-50 backdrop-blur-lg transition duration-500 ") + (isScrolled ? " bg-white shadow-sm" : "")}>
-            <nav className="flex justify-between w-full max-w-[1280px] h-20 items-center">
-                <div className="flex w-full px-5 justify-between items-center max-w-[1280px]">
+            <nav className="flex justify-between w-full  h-20 items-center">
+                <div className="flex w-full px-5 justify-between items-center">
                     <div className="select-none drag-none">
                         <Link href='/'>
                         <Image
@@ -44,7 +44,7 @@ export default function Navbar() {
                         />
                         </Link>
                     </div>
-                    <div className={"font-semibold gap-8 hidden md:flex md:ml-8" + ((user) ? " md:ml-20": "")}>
+                    <div className={"font-semibold gap-8 hidden md:flex" + ((user) ? " md:ml-20": " md:ml-8 ")}>
                         <NavItem name='Product' href="/product" childrenItems={[{name:"Features", href: "/features"}, {name:"Support", href: "/support"}]}/>
                         <NavItem name='Company' href="/Company" childrenItems={[{name:"About", href: "/about"}]}/>
                         <NavItem name='Blog' href="/blog"/>

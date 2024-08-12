@@ -29,7 +29,7 @@ export default function HomeContent() {
             <h1 className="text-5xl md:text-7xl font-light ">
               Speech and Interview Prep, made <strong>Simple</strong>
             </h1>
-            <div className="w-full flex md:justify-end pt-20 pr-20 ">
+            <div className="w-full flex md:justify-end pt-20 2xl:pt-80 pr-20 ">
               <div className="text-2xl font-light w-[16rem] ml-1 md:ml-0">
                 <p>Accessible growth with Flara, powered by AI</p>
                 <AnimatedLink/>
@@ -204,7 +204,7 @@ export default function HomeContent() {
                 <div className="bg-[#333431]">
                   <div className="flex justify-between">
                     <div className="text-3xl px-4 pt-3">Plus</div>
-                    <div className="font-light bg-[#FC8C3C] p-3 rounded-bl-3xl absolute top-0 right-0">SUGGESTED</div>
+                    <div className="font-light bg-[#FC8C3C] px-3 py-1 rounded-bl-3xl absolute top-0 right-0">SUGGESTED</div>
                   </div>
                   <div className="text-xl text-gray-400 font-light px-4 pb-3">Purchase more credits.</div>
                 </div>
@@ -224,7 +224,7 @@ export default function HomeContent() {
               <div className="h-[500px] border border-[#434442] rounded-3xl overflow-hidden relative">
                 <div className="bg-[#333431] px-4 py-3">
                   <div className="text-3xl">Organization</div>
-                  <div className="text-xl text-gray-400 font-light">For non-profits and organizations.</div>
+                  <div className="text-xl text-gray-400 font-light">For non-profits.</div>
                 </div>
                 <div>
                   <div className="mt-12">

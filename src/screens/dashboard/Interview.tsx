@@ -1,3 +1,4 @@
+import QuestionGeneration from '@/components/dashboard/interview/QuestionGeneration';
 import { UserProfile } from '@auth0/nextjs-auth0/client';
 
 interface InterviewProps {
@@ -5,6 +6,8 @@ interface InterviewProps {
 }
 export default function InterviewContent({user}: InterviewProps) {
   return (
-    <div className='h-screen w-sceen flex justify-center items-center'>Interview</div>
+    <div className='flex justify-center items-center mt-28'>
+      <QuestionGeneration user={user}/>
+    </div>
   );
 }
