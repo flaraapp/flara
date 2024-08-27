@@ -13,10 +13,21 @@ interface CardData {
   pending: boolean;
   title: string;
 }
-
+interface CardDataInterview {
+  id: number | string;
+  created_at: string;
+  overall_feedback: string;
+  overall_rating: string;
+  overall_wpm: number;
+  pending: boolean;
+  title: string;
+}
 interface CardProps {
-  data: CardData;
+  data: CardData | CardDataInterview;
   type: string;
+}
+function isCardData(data: any): data is CardData {
+  return (data as CardData).rating !== undefined;
 }
 export default function Card({ data, type }: CardProps) {
   function formatDateTime(utcString: string) {
@@ -61,9 +72,19 @@ export default function Card({ data, type }: CardProps) {
         <div>
           <p className='text-[#22222290] text-md -mb-2 font-semibold'>{formatDateTime(data.created_at).toUpperCase()}</p>
           <p className='text-xl text-wrap line-clamp-1 mb-4'>{data.title}</p>
+          {isCardData(data) ? (
+        <>
           <Rating rating={data.rating}></Rating>
           <p className='text-[#22222290] text-sm font-semibold mt-4'>FEEDBACK PREVIEW</p>
           <p className='text-sm text-wrap line-clamp-3 leading-4'>{data.feedback}</p>
+        </>
+      ) : (
+        <>
+          <Rating rating={data.overall_rating}></Rating>
+          <p className='text-[#22222290] text-sm font-semibold mt-4'>FEEDBACK PREVIEW</p>
+          <p className='text-sm text-wrap line-clamp-3 leading-4'>{data.overall_feedback}</p>
+        </>
+      )}
           <div className='flex w-full justify-end items-center mt-2 text-[#22222290] text-sm font-semibold text-right gap-1 hover:text-[#222222] duration-500 transition-all'>
             <p className='text-sm font-semibold text-right'>VIEW REPORT</p>
             <GoArrowRight></GoArrowRight>

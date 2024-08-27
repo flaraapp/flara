@@ -12,9 +12,18 @@ interface CardData {
   pending: boolean;
   title: string;
 }
+interface CardDataInterview {
+  id: number | string;
+  created_at: string;
+  overall_feedback: string;
+  overall_rating: string;
+  overall_wpm: number;
+  pending: boolean;
+  title: string;
+}
 interface CardContainerProps {
   type: 'speech' | 'interview';
-  data: CardData[];
+  data: CardData[] | CardDataInterview[];
 }
 
 export default function CardContainer({ type, data }: CardContainerProps) {

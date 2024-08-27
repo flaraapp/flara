@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 import Button from '@/components/button/Button';
 
@@ -15,7 +16,7 @@ export default function ErrorScreen() {
         </div>
         <div className='w-full flex items-center justify-center'>
             <Image
-                src={"flara.svg"}
+                src={require('../../public/flara.svg')}
                 alt={"Flara"}
                 width={135}
                 height={50}
