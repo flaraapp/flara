@@ -1,7 +1,5 @@
 import { useState } from "react";
 import Question from "./Question";
-import fetch from 'node-fetch';
-import FormData from 'form-data';
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { SubmitProps } from "@/screens/dashboard/Interview";
 import { useRouter } from "next/navigation";
@@ -37,8 +35,8 @@ export default function QuestionContainer({ questions, props, setError }: Props)
 
     formData.append('user_sub', user?.sub || '');
     formData.append('title', props.title);
-    formData.append('isVideo', false);
-    formData.append('isTechnical', props.isTechnical || false);
+    formData.append('isVideo', "false");
+    formData.append('isTechnical', (props.isTechnical || false) + "");
     formData.append('job_description', props.jobDescription);
     formData.append('resume', props.resume || 'Nothing');
 
