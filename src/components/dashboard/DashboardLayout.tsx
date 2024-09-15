@@ -49,7 +49,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
                 className="select-none drag-none"
                 priority
             />
-          <div className='flex gap-4 items-center justify-center'>
+          <div className='flex gap-4 items-center justify-center h-10'>
              {/* future plus */}
              { user && 
             <UserMenu user={user} />
@@ -139,7 +139,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
       {/* Mobile Layout */}
       <div className="md:hidden flex flex-col h-screen w-full">
         {/* Toggle Sidebar Button for Mobile */}
-        <div className="bg-neutral-100 p-4 flex justify-between items-center">
+        <div className="bg-white p-4 flex justify-between items-center">
           <Image
             src={require('../../../public/flara.svg')}
             alt="Flara"
@@ -162,7 +162,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: "tween", duration: 0.1 }}
-            className="bg-neutral-100 w-full h-full"
+            className="bg-white w-full h-full"
           >
             <ul className="flex p-4 space-y-4 flex-col">
               <Link href="/reports" className="flex justify-center">
