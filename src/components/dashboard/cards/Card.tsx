@@ -67,7 +67,7 @@ export default function Card({ data, type }: CardProps) {
     </div>
   );
   return (
-    <Link href={`/reports/${type}/${data.id}`}>
+    <Link href={`/dashboard/reports/${type}/${data.id}`}>
       <div className="p-4 bg-white border rounded-2xl cursor-pointer w-80 h-full transition duration-500 hover:bg-neutral-100">
         <div>
           <p className='text-[#22222290] text-md -mb-2 font-semibold'>{formatDateTime(data.created_at).toUpperCase()}</p>

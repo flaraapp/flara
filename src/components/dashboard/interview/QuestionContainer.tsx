@@ -55,7 +55,7 @@ export default function QuestionContainer({ questions, props, setError }: Props)
             setError(true);
           } else {
             setProcessing(false);
-            router.push('/reports/interview/' + data);
+            router.push('/dashboard/reports/interview/' + data);
           }
         })
       });

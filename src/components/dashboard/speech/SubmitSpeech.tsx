@@ -51,7 +51,7 @@ export default function SubmitSpeech({ blob, blobUrl, isVideo, setBlob, setBlobU
                 client.from('speech_reports').select().eq('user_id', user?.sub).order('created_at', { ascending: false }).then(res => {
                     if (res.data) {
                         if (!res.data[0].pending)
-                            router.push("/reports/speech/" + res.data[0].id);
+                            router.push("/dashboard/reports/speech/" + res.data[0].id);
                         else {
                             console.error('Error submitting speech:', res);
                             setError(true);
