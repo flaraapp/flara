@@ -8,8 +8,19 @@ import MenuBar from '@/components/dashboard/MenuBar';
 import ReportsContent from './Reports';
 import { client } from '@/supabase/client';
 import { useEffect } from 'react';
+import DashboardLayout from '@/components/dashboard/DashboardLayout';
+import InterviewContent from './Interview';
+import SpeechContent from './Speech';
+
+import { create } from 'zustand'
+
+export const usePageStore = create((set) => ({
+  page: "reports",
+  setPage: (page: string) => set((state: { page: string; }) => ({ page: page })),
+}))
 
 export default function Dashboard() {
+  const page = usePageStore((state: any) => state.page)
   const { user, error, isLoading } = useUser();
   useEffect(() => {
     if (user) {
@@ -29,16 +40,11 @@ export default function Dashboard() {
 
   return (
     user && (
-      <>
-      <div className="h-[110vh] w-screen opacity-25 absolute z-[-1] top-0" style={{
-            backgroundImage: "radial-gradient(at 84.9% 25.3%, #B2F260 0px, transparent 50%),radial-gradient(at 15.1% 57.5%, #4FE4C4 0px, transparent 50%),radial-gradient(at 65.4% 55.7%, #FC8C3C 0px, transparent 50%)",
-        }}></div>
-      <div>
-        <UserMenu user={user}/>
-        <MenuBar activePage={'reports'}/>
-        <ReportsContent user={user}/>
-      </div>
-      </>
+      <DashboardLayout user={user}>
+        {page == 'reports' && <ReportsContent user={user}/>}
+        {page == 'speech' && <SpeechContent user={user}/>}
+        {page == 'interview' && <InterviewContent user={user}/>}
+      </DashboardLayout>
     )
   );
 }

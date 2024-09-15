@@ -4,9 +4,9 @@ import { client } from "@/supabase/client"
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useEffect, useState } from "react";
 import LoadingScreen from "@/screens/state/Loading"
-import UserMenu from "@/components/dashboard/UserMenu";
-import MenuBar from "@/components/dashboard/MenuBar";
 import ReportView from "@/screens/dashboard/ReportView";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
+import { usePageStore } from "@/screens/dashboard/Dashboard";
 
 interface Report {
     id: number | string;
@@ -20,6 +20,10 @@ interface Report {
     user_id: string;
   }
 export default function SpeechReport({ params }: { params: { slug: string } }) {
+    const setPage = () => usePageStore.setState({page: 'reports'});
+    useEffect(() => {
+      setPage();
+    }, []);
     const { user } = useUser();
     const [report, setReport] = useState() as any;
     const [loading, setLoading] = useState(true);
@@ -38,20 +42,17 @@ export default function SpeechReport({ params }: { params: { slug: string } }) {
     }, [params.slug, user?.sub]);
     if (report && user) {
         return (
-            <div>
-                <UserMenu user={user}/>
-                <MenuBar activePage={'reports'}/>
+            <DashboardLayout user={user}>
                 <ReportView report={report}/>
-            </div>
+            </DashboardLayout>
         )
     } 
     if (loading && !error)
-        return <LoadingScreen>
-            { user &&
-                <UserMenu user={user}/>
-            }
-            <MenuBar activePage={'reports'}/>
-        </LoadingScreen>;
+        return
+        <DashboardLayout user={user}>
+                    <LoadingScreen>
+                </LoadingScreen>
+        </DashboardLayout>;
     if (error || report.pending)
         return <ErrorScreen/>;
 

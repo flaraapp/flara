@@ -4,10 +4,14 @@ import { client } from "@/supabase/client"
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useEffect, useState } from "react";
 import LoadingScreen from "@/screens/state/Loading"
-import UserMenu from "@/components/dashboard/UserMenu";
-import MenuBar from "@/components/dashboard/MenuBar";
 import ReportViewInterview from "@/screens/dashboard/ReportViewInterview";
+import DashboardLayout from "@/components/dashboard/DashboardLayout";
+import { usePageStore } from "@/screens/dashboard/Dashboard";
 export default function InterviewReport({ params }: { params: { slug: string } }) {
+    const setPage = () => usePageStore.setState({page: 'reports'});
+    useEffect(() => {
+      setPage();
+    }, []);
     const { user } = useUser();
     const [report, setReport] = useState() as any;
     const [loading, setLoading] = useState(true);
@@ -27,20 +31,16 @@ export default function InterviewReport({ params }: { params: { slug: string } }
     console.log(report);
     if (report && user) {
         return (
-            <div>
-                <UserMenu user={user}/>
-                <MenuBar activePage={'reports'}/>
+            <DashboardLayout user={user}>
                 <ReportViewInterview report={report}/>
-            </div>
+            </DashboardLayout>
         )
     } 
     if (loading && !error)
-        return <LoadingScreen>
-            { user &&
-                <UserMenu user={user}/>
-            }
-            <MenuBar activePage={'reports'}/>
-        </LoadingScreen>;
+        return
+        <DashboardLayout user={user}>
+            <LoadingScreen/>
+        </DashboardLayout>
     if (error || report.pending)
         return <ErrorScreen/>;
 
