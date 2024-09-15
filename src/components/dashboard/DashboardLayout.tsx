@@ -169,7 +169,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ type: "tween", duration: 0.1 }}
+            transition={{ duration: 0.5 }}
             className="h-[calc(98%-4rem)] w-32 bg-neutral-100 absolute bottom-0 rounded-tr-2xl border-r border-t transition duration-500 shadow-sm"
           >
             <ul className="flex p-4 space-y-4 flex-col w-32">
