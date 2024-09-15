@@ -38,7 +38,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
   return (
     <div className="flex h-screen overflow-hidden bg-white">
       {/* Desktop Layout */}
-      <div className="hidden md:flex flex-col w-full">
+      <div className="hidden md:flex flex-col w-full bg-neutral-100">
         {/* Topbar with Logo */}
         <div className="w-full bg-neutral-100 p-5 px-8 flex justify-between items-center">
           <Link href='/home'>
@@ -139,9 +139,9 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
       </div>
 
       {/* Mobile Layout */}
-      <div className="md:hidden flex flex-col h-screen w-full">
+      <div className={"md:hidden flex flex-col h-screen w-full" + (isSidebarOpen ? " bg-neutral-100" : "")}>
         {/* Toggle Sidebar Button for Mobile */}
-        <div className="bg-white p-4 flex justify-between items-center">
+        <div className="h-16 p-4 flex justify-between items-center">
           <Image
             src={require('../../../public/flara.svg')}
             alt="Flara"
@@ -158,7 +158,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
         </div>
 
         {/* Sidebar and Content Stacked for Mobile */}
-        <div onClick={()=>{(isSidebarOpen ? setIsSidebarOpen(false) : null)}}className={"flex-1 py-4 bg-white overflow-hidden " + (isSidebarOpen ? 'brightness-90' : '')}>
+        <div onClick={()=>{(isSidebarOpen ? setIsSidebarOpen(false) : null)}}className={"flex-1 py-4 bg-white overflow-hidden transition duration-500 " + (isSidebarOpen ? 'brightness-90' : '')}>
           {/* The container with scrollable content */}
           <div className="overflow-x-scroll overflow-y-auto h-full">
             {children}
@@ -166,7 +166,11 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
         </div>
         {isSidebarOpen && (
           <motion.div
-            className="h-[90%] w-32 border-r border-t rounded-tr-xl bg-neutral-100 absolute bottom-0 transition duration-500"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ type: "tween", duration: 0.1 }}
+            className="h-[calc(98%-4rem)] w-32 bg-neutral-100 absolute bottom-0 rounded-tr-2xl border-r border-t transition duration-500 shadow-sm"
           >
             <ul className="flex p-4 space-y-4 flex-col w-32">
               <Link href="/dashboard" className="flex justify-center" onClick={()=>{(isSidebarOpen ? setIsSidebarOpen(false) : null)}}>
