@@ -27,7 +27,7 @@ export default function InterviewContent({user}: InterviewProps) {
   return (
     <>
     <div></div>
-    <div className='flex justify-center items-center mt-28'>
+    <div className='flex justify-center items-center'>
       <QuestionGeneration setProps={setProps} setQuestions={setQuestions} setError={setError}/>
     </div>
     </>

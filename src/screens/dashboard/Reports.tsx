@@ -30,7 +30,7 @@ export default function ReportsContent({user}: ReportsProps) {
   console.log(dataSpeech);
   console.log(dataInterview);
   return (
-    <div className='mb-60'>
+    <div className=''>
       <h1 className='text-3xl font-light mx-5'>Speech</h1>
       <CardContainer data={dataSpeech} type="speech" />
       <h1 className='text-3xl font-light mx-5 mt-10'>Interview</h1>

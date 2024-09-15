@@ -41,7 +41,7 @@ export default function UserMenu({ user }: UserMenuProps) {
             className="">
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant={'ghost'} className='w-8 h-8 rounded-full'>
+                <Button variant={'ghost'} className='w-8 h-8 rounded-full translate-y-[0.25rem]'>
                     <Avatar className='h-8 w-8 cursor-pointer'>
                         <AvatarImage src={user.picture || ""} />
                         <AvatarFallback>{getName().substring(0,2)}</AvatarFallback>

@@ -12,6 +12,7 @@ import { LogOut, CreditCard, Settings, Users, Gauge, Mic, Plus } from 'lucide-re
 import Link from 'next/link';
 import { PlaceholderValue, OnLoadingComplete } from 'next/dist/shared/lib/get-img-props';
 import { usePageStore } from '@/screens/dashboard/Dashboard';
+import { MenuButton } from '../button/MenuButton';
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -60,8 +61,8 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
           {/* Sidebar */}
           <div className="w-28 bg-neutral-100 flex flex-col">
             <ul className="flex p-4 space-y-4 flex-col">
-              <Link href="/reports" className="flex justify-center w-26">
-                <Button variant="ghost" className={'h-16 min-w-26 hover:text-[#222222] transition duration-500 hover:bg-neutral-200 ' + (isActive("reports") ? 'text-[#222222] bg-neutral-200' : 'text-neutral-400')}>
+              <Link href="/reports" className="flex justify-center">
+                <Button variant="ghost" className={'h-16 min-w-26 hover:text-[#222222] transition duration-500 ' + (isActive("reports") ? 'text-[#222222] bg-neutral-200 hover:bg-neutral-200' : 'text-neutral-400')}>
                   <div className="">
                     <div className="flex justify-center mb-1">
                       <Gauge size={20}/>
@@ -71,7 +72,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
                 </Button>
               </Link>
               <Link href="/speech"  className="flex justify-center w-26">
-                <Button variant="ghost" className={'h-16 min-w-26 hover:text-[#222222] transition duration-500 hover:bg-neutral-200 ' + (isActive("speech") ? 'text-[#222222] bg-neutral-200' : 'text-neutral-400')}>
+                <Button variant="ghost" className={'h-16 min-w-26 hover:text-[#222222] transition duration-500 ' + (isActive("speech") ? 'text-[#222222] bg-neutral-200 hover:bg-neutral-200' : 'text-neutral-400')}>
                   <div className="">
                     <div className="flex justify-center mb-1">
                       <Mic size={20}/>
@@ -81,7 +82,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
                 </Button>
               </Link>
               <Link href="/interview" className="flex justify-center w-26">
-                <Button variant="ghost" className={'h-16  w-26 hover:text-[#222222] transition duration-500 hover:bg-neutral-200 ' + (isActive("interview") ? 'text-[#222222] bg-neutral-200' : 'text-neutral-400')}>
+                <Button variant="ghost" className={'h-16  w-26 hover:text-[#222222] transition duration-500 ' + (isActive("interview") ? 'text-[#222222] bg-neutral-200 hover:bg-neutral-200' : 'text-neutral-400')}>
                   <div className="">
                     <div className="flex justify-center mb-1">
                         <Users size={20}/>
@@ -91,7 +92,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
                 </Button>
               </Link>
               <div className='bottom-0 absolute -translate-x-[1.5%] pb-6 space-y-4'>
-                <Link href="/settings" className="flex justify-center w-26">
+                <Link href="/settings" className="flex justify-center">
                     <Button variant="ghost" className={'h-16 text-neutral-400 hover:bg-neutral-200 transition duration-500'}>
                     <div className="">
                         <div className="flex justify-center mb-1">
@@ -136,9 +137,9 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
       </div>
 
       {/* Mobile Layout */}
-      <div className="md:hidden flex flex-col h-screen">
+      <div className="md:hidden flex flex-col h-screen w-full">
         {/* Toggle Sidebar Button for Mobile */}
-        <div className="w-screen bg-neutral-100 p-4 flex justify-between items-center">
+        <div className="bg-neutral-100 p-4 flex justify-between items-center">
           <Image
             src={require('../../../public/flara.svg')}
             alt="Flara"
@@ -146,36 +147,98 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
             height={60}
             className="select-none drag-none"
           />
-          <button
-            className="bg-neutral-100 p-3 rounded-full border"
-            onClick={toggleSidebar}
-          >
-            <BsList size={24} />
-          </button>
+          <MenuButton isOpen={isSidebarOpen}
+                    strokeWidth="1.2"
+                    height={9}
+                    width={20}
+                    lineProps={{ strokeLinecap: "round" }}
+                    onClick={()=>setIsSidebarOpen(!isSidebarOpen)}></MenuButton>
         </div>
 
         {/* Sidebar and Content Stacked for Mobile */}
         {isSidebarOpen && (
           <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: "spring", duration: 0.5 }}
+            initial={{ y: '100%' }}
+            animate={{ y: 0 }}
+            exit={{ y: '100%' }}
+            transition={{ type: "tween", duration: 0.1 }}
             className="bg-neutral-100 w-full h-full"
           >
-            <ul className="p-4 space-y-4">
-              <li><Link href="#" className="text-lg font-semibold hover:text-neutral-400">Interview</Link></li>
-              <li><Link href="#" className="text-lg font-semibold hover:text-neutral-400">Speech</Link></li>
-              <li><Link href="#" className="text-lg font-semibold hover:text-neutral-400">Reports</Link></li>
+            <ul className="flex p-4 space-y-4 flex-col">
+              <Link href="/reports" className="flex justify-center">
+                <Button variant="ghost" className={'h-16 min-w-26 hover:text-[#222222] transition duration-500 ' + (isActive("reports") ? 'text-[#222222] bg-neutral-200 hover:bg-neutral-200' : 'text-neutral-400')}>
+                  <div className="flex gap-4 items-center">
+                    <div className="flex justify-center">
+                      <Gauge size={20}/>
+                    </div>
+                    <p className="text-center font-light">REPORTS</p>
+                  </div>
+                </Button>
+              </Link>
+              <Link href="/speech"  className="flex justify-center w-26">
+                <Button variant="ghost" className={'h-16 min-w-26 hover:text-[#222222] transition duration-500 ' + (isActive("speech") ? 'text-[#222222] bg-neutral-200 hover:bg-neutral-200' : 'text-neutral-400')}>
+                  <div className="flex gap-4 items-center">
+                    <div className="flex justify-center">
+                      <Mic size={20}/>
+                    </div>
+                    <p className="text-center font-light">SPEECH</p>
+                  </div>
+                </Button>
+              </Link>
+              <Link href="/interview" className="flex justify-center w-26">
+                <Button variant="ghost" className={'h-16  w-26 hover:text-[#222222] transition duration-500 ' + (isActive("interview") ? 'text-[#222222] bg-neutral-200 hover:bg-neutral-200' : 'text-neutral-400')}>
+                  <div className="flex gap-4 items-center">
+                    <div className="flex justify-center">
+                        <Users size={20}/>
+                    </div>
+                    <p className="text-center font-light">INTERVIEW</p>
+                  </div>
+                </Button>
+              </Link>
+              <div className='bottom-0 absolute right-1/2 left-1/2 pb-6 space-y-4'>
+                <Link href="/settings" className="flex justify-center">
+                    <Button variant="ghost" className={'h-16 text-neutral-400 hover:bg-neutral-200 transition duration-500'}>
+                    <div className="flex gap-4 items-center">
+                        <div className="flex justify-center">
+                        <Settings size={20}/>
+                        </div>
+                        <p className="text-center font-light">SETTINGS</p>
+                    </div>
+                    </Button>
+                </Link>
+                <Link href="/billing" className="flex justify-center w-26">
+                    <Button variant="ghost" className={'h-16 text-neutral-400 hover:bg-neutral-200 transition duration-500'}>
+                    <div className="flex gap-4 items-center">
+                        <div className="flex justify-center">
+                        <CreditCard size={20}/>
+                        </div>
+                        <p className="text-center font-light">UPGRADE</p>
+                    </div>
+                    </Button>
+                </Link>
+                <Link href="/api/auth/logout" className="flex justify-center w-26">
+                    <Button variant="ghost" className={'h-16 text-red-500 hover:bg-neutral-200 transition duration-500 hover:text-red-700'}>
+                    <div className="flex gap-4 items-center">
+                        <div className="flex justify-center">
+                        <LogOut size={20}/>
+                        </div>
+                        <p className="text-center font-light">LOG OUT</p>
+                    </div>
+                    </Button>
+                </Link>
+              </div>
             </ul>
           </motion.div>
         )}
 
         {/* Main Content for Mobile (allow horizontal scroll here as well) */}
         {!isSidebarOpen && (
-          <div className="flex-1 overflow-x-auto overflow-y-auto p-6 bg-white">
+          <div className="flex-1 py-4 bg-white overflow-hidden">
+          {/* The container with scrollable content */}
+          <div className="overflow-x-scroll overflow-y-auto h-full">
             {children}
           </div>
+        </div>
         )}
       </div>
     </div>
