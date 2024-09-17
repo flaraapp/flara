@@ -20,6 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { User, CreditCard, Settings, Keyboard, Users, UserPlus, Mail, MessageSquare, PlusCircle, Plus, Github, LifeBuoy, Cloud, LogOut, Home } from 'lucide-react';
+import Link from 'next/link';
 
 interface UserMenuProps {
     user: UserProfile;
@@ -52,10 +53,12 @@ export default function UserMenu({ user }: UserMenuProps) {
         <DropdownMenuLabel>{getName()}</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Home className="mr-2 h-4 w-4" />
-            <span>Home</span>
-          </DropdownMenuItem>
+          <Link href='/home'>
+            <DropdownMenuItem>
+              <Home className="mr-2 h-4 w-4" />
+              <span>Home</span>
+            </DropdownMenuItem>
+          </Link>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>

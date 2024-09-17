@@ -25,14 +25,14 @@ export default function NavMobile(props: NavMobileProps) {
             <div className="w-full px-5 items-center z-10">
                 <div className="flex-1 h-[60vh] text-3xl font-light">
                     <div className="py-1"></div>
-                    <NavItem name='Product' href="/product" childrenItems={[{name:"Features", href: "/features"}, {name:"Support", href: "/support"}]}/>
+                    <NavItem name='Product' href="/product" childrenItems={[{name:"Features", href: "#features"}, {name:"Support", href: "mailto:contact@flara.app"}]}/>
                     <div className="py-1"></div>
-                    <NavItem name='Company' href="/Company" childrenItems={[{name:"About", href: "/about"}]}/>
+                    <NavItem name='Company' href="/Company" childrenItems={[{name:"About", href: "#about"}]}/>
                     <div className="py-1"></div>
-                    <NavItem name='Blog' href="/blog"/>
+                    <NavItem name='Pricing' href="#pricing"/>
                 </div>
                 <div className="gap-2 grid grid-rows-2">
-                    <Button text="Contact" type="secondary" href="/contact"></Button>
+                    <Button text="Contact" type="secondary" href="mailto:contact@flara.app"></Button>
                     {  (user) ?
                         <Button text="Dashboard" type="primary" href="/"></Button> :
                         <Button text="Login" type="primary" href="/api/auth/login"></Button>

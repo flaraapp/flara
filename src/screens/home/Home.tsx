@@ -31,7 +31,7 @@ export default function HomeContent() {
             </h1>
             <div className="w-full flex md:justify-end pt-20 2xl:pt-80 pr-20 ">
               <div className="text-2xl font-light w-[16rem] ml-1 md:ml-0">
-                <p>Accessible growth with Flara, powered by AI</p>
+                <p  id='features'>Accessible growth with Flara, powered by AI</p>
                 <AnimatedLink/>
               </div>
             </div>
@@ -159,7 +159,7 @@ export default function HomeContent() {
               </div>
             </div>
           </div>
-          <div className="w-screen bg-[#222222] text-neutral-100 md:pb-32 pb-16">
+          <div className="w-screen bg-[#222222] text-neutral-100 md:pb-32 pb-16" id='pricing'>
             <div className="text-center flex justify-center pt-8 md:pt-20">
               <div className="border border-[#434442] py-1 px-4 rounded-full text-xl text-neutral-100 bg-[#333431]">PRICING</div>
             </div>

@@ -10,6 +10,7 @@ import { create } from 'zustand'
 import ReportsContent from '@/screens/dashboard/Reports';
 import SpeechContent from '@/screens/dashboard/Speech';
 import InterviewContent from '@/screens/dashboard/Interview';
+import { useRouter } from 'next/navigation';
 
 export const usePageStore = create((set) => ({
   page: "reports",
@@ -19,6 +20,7 @@ export const usePageStore = create((set) => ({
 export default function Layout({ children }: { children: React.ReactNode }) {
   const page = usePageStore((state: any) => state.page)
   const { user, error, isLoading } = useUser();
+  const router = useRouter();
   useEffect(() => {
     if (user) {
       client.from('user').select().eq("user_id", user?.sub).then(res => {
@@ -34,7 +36,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   })
   if (isLoading) return <LoadingScreen />;
   if (error) return <ErrorScreen error={error}/>;
-
+  if (!user) return router.push('/');
   return (
     user && (
       <DashboardLayout user={user}>

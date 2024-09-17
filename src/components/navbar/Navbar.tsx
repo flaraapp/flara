@@ -45,12 +45,12 @@ export default function Navbar() {
                         </Link>
                     </div>
                     <div className={"font-semibold gap-8 hidden md:flex" + ((user) ? " md:ml-20": " md:ml-8 ")}>
-                        <NavItem name='Product' href="/product" childrenItems={[{name:"Features", href: "/features"}, {name:"Support", href: "/support"}]}/>
-                        <NavItem name='Company' href="/Company" childrenItems={[{name:"About", href: "/about"}]}/>
-                        <NavItem name='Blog' href="/blog"/>
+                        <NavItem name='Product' href="#product" childrenItems={[{name:"Features", href: "#features"}, {name:"Support", href: "mailto:contact@flara.app"}]}/>
+                        <NavItem name='Company' href="#company" childrenItems={[{name:"About", href: "#about"}]}/>
+                        <NavItem name='Pricing' href="#pricing"/>
                     </div>
                     <div className="gap-2 hidden md:flex">
-                        <Button text="Contact" type="secondary" href="/contact"></Button>
+                        <Button text="Contact" type="secondary" href="mailto:contact@flara.app"></Button>
                         {  (user) ?
                         <Button text="Dashboard" type="primary" href="/"></Button> :
                         <Button text="Login" type="primary" href="/api/auth/login"></Button>

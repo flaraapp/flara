@@ -62,7 +62,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
         <div className="flex flex-1 overflow-hidden relative">
           {/* Sidebar */}
           <div className="w-28 bg-neutral-100 flex flex-col">
-            <ul className="flex p-4 space-y-4 flex-col">
+            <ul className="flex p-4 space-y-4 flex-col h-full">
               <Link href="/dashboard" className="flex justify-center">
                 <Button variant="ghost" className={'h-16 min-w-26 hover:text-[#222222] transition duration-500 ' + (isActive("reports") ? 'text-[#222222] bg-neutral-200 hover:bg-neutral-200' : 'text-neutral-400')}>
                   <div className="">
@@ -93,7 +93,8 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
                   </div>
                 </Button>
               </Link>
-              <div className='bottom-0 absolute -translate-x-[1.5%] pb-6 space-y-4'>
+              <div className='h-full flex-1 flex-grow left-0 w-full pb-6 space-y-4 relative'>
+                <div className='absolute bottom-0 right-1/2 left-1/2 space-y-4'>
                 <Link href="/settings" className="flex justify-center">
                     <Button variant="ghost" className={'h-16 text-neutral-400 hover:bg-neutral-200 transition duration-500'}>
                     <div className="">
@@ -124,14 +125,15 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
                     </div>
                     </Button>
                 </Link>
+                </div>
               </div>
             </ul>
           </div>
 
           {/* Scrollable Content Area with Rounded Edges */}
-          <div className="flex-1 p-6 bg-white overflow-hidden rounded-tl-3xl">
+          <div className="flex-1 bg-white overflow-hidden rounded-tl-3xl">
             {/* The container with scrollable content */}
-            <div className="overflow-x-auto overflow-y-auto h-full">
+            <div className="overflow-x-auto overflow-y-auto h-full relative">
               {children}
             </div>
           </div>
@@ -160,7 +162,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
         {/* Sidebar and Content Stacked for Mobile */}
         <div onClick={()=>{(isSidebarOpen ? setIsSidebarOpen(false) : null)}}className={"flex-1 py-4 bg-white overflow-hidden transition duration-500 " + (isSidebarOpen ? 'brightness-90' : '')}>
           {/* The container with scrollable content */}
-          <div className="overflow-x-scroll overflow-y-auto h-full">
+          <div className="overflow-x-scroll overflow-y-auto h-full relative">
             {children}
           </div>
         </div>
