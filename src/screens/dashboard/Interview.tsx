@@ -24,10 +24,10 @@ export default function InterviewContent({user}: InterviewProps) {
   if (questions) return (
     <QuestionContainer setError={setError} props={props} questions={questions}/>
   )
-  return (
+  if (!questions) return (
     <>
     <div></div>
-    <div className='flex justify-center items-center'>
+    <div className='flex justify-center items-center grow'>
       <QuestionGeneration setProps={setProps} setQuestions={setQuestions} setError={setError}/>
     </div>
     </>

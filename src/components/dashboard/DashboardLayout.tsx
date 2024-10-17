@@ -133,7 +133,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
           {/* Scrollable Content Area with Rounded Edges */}
           <div className="flex-1 bg-white overflow-hidden rounded-tl-3xl">
             {/* The container with scrollable content */}
-            <div className="overflow-x-auto overflow-y-auto h-full relative">
+            <div className="overflow-x-auto overflow-y-auto h-full relative flex">
               {children}
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
       {/* Mobile Layout */}
       <div className={"md:hidden flex flex-col h-screen w-full" + (isSidebarOpen ? " bg-neutral-100" : "")}>
         {/* Toggle Sidebar Button for Mobile */}
-        <div className="h-16 p-4 flex justify-between items-center">
+        <div className="p-4 flex justify-between items-center">
           <Image
             src={require('../../../public/flara.svg')}
             alt="Flara"
@@ -160,9 +160,9 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
         </div>
 
         {/* Sidebar and Content Stacked for Mobile */}
-        <div onClick={()=>{(isSidebarOpen ? setIsSidebarOpen(false) : null)}}className={"flex-1 py-4 bg-white overflow-hidden transition duration-500 " + (isSidebarOpen ? 'brightness-90' : '')}>
+        <div onClick={()=>{(isSidebarOpen ? setIsSidebarOpen(false) : null)}}className={"flex-1 bg-white overflow-hidden transition duration-500 " + (isSidebarOpen ? 'brightness-90' : '')}>
           {/* The container with scrollable content */}
-          <div className="overflow-x-scroll overflow-y-auto h-full relative">
+          <div className="overflow-x-scroll overflow-y-auto h-full relative flex">
             {children}
           </div>
         </div>

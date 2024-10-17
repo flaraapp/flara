@@ -140,3 +140,19 @@ audio::-webkit-media-controls-fullscreen-button {
     @apply bg-background text-foreground;
     }
 }
+
+
+/* Hide progress bar and progress-related elements */
+.rhap_progress-bar,
+.rhap_progress-filled,
+.rhap_progress-indicator,
+.rhap_current-time,
+.rhap_container,
+.rhap_total-time {
+  display: none !important;
+}
+
+/* Hide the entire controls section if you want */
+.rhap_controls-section {
+  display: none !important;
+}

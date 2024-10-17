@@ -16,7 +16,6 @@ import { Slider } from "@/components/ui/slider"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Textarea } from "@/components/ui/textarea"
 import { useState } from "react"
-
 const formSchema = z.object({
   title: z
     .string()
@@ -89,6 +88,12 @@ export default function QuestionGenerator({
               console.log(data);
               data = JSON.parse(data)
               const arr = Object.values(data) as string[]
+              setProps({
+                title: values.title,
+                isTechnical: values.isTechnical,
+                jobDescription: values.jobDescription,
+                resume: values.resume,
+              })
               setQuestions(arr)
               setGenerating(false)
             })
@@ -105,22 +110,15 @@ export default function QuestionGenerator({
     }
   }
 
-  if (generating) {
-    return (
-      <div className="overflow-y-hidden h-screen">
-        <div
-          className="h-[100vh] w-screen opacity-25 absolute z-[-1] top-0"
-          style={{
-            backgroundImage:
-              "radial-gradient(at 84.9% 25.3%, #B2F260 0px, transparent 50%),radial-gradient(at 15.1% 57.5%, #4FE4C4 0px, transparent 50%),radial-gradient(at 65.4% 55.7%, #FC8C3C 0px, transparent 50%)",
-          }}
-        ></div>
-        <div className="flex h-[60vh] w-full justify-center items-center">
-          <div className="">
-            <div className="flex justify-center items-center w-full pb-4">
+
+    if (generating) { return (
+      <div className="overflow-y-hidden grow">
+        <div className="flex justify-center items-center">
+          <div className="mx-10 border rounded-3xl overflow-hidden">
+            <div className="flex justify-center items-center pb-4">
               <svg
                 aria-hidden="true"
-                className="w-16 h-16 text-gray-200 animate-spin fill-[#6cde12] flex justify-center items-center"
+                className="w-16 h-16 mt-10 text-gray-200 animate-spin fill-[#6cde12] flex justify-center items-center"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -135,12 +133,17 @@ export default function QuestionGenerator({
                 />
               </svg>
             </div>
-            <p className="text-2xl text-gray-500 animate-pulse text-center w-screen">
+            <p className="text-2xl text-gray-500 animate-pulse text-center px-5 md:px-10">
               Generating Questions...
             </p>
-            <div className="w-screen text-center flex justify-center">
-              <p className="text-center w-80 text-[#22222290] mt-5">
+            <div className="text-center flex justify-center px-5 md:px-10">
+              <p className="text-center max-w-80 text-[#22222290] mt-3">
                 This may take up to 30 seconds.
+              </p>
+            </div>
+            <div className="text-center flex justify-center">
+              <p className="text-center max-w-[30rem] text-[#33333390] bg-neutral-50 mt-10 py-10 border-t px-5 md:px-10">
+                <strong>TIP</strong>: Answer the questions in order and take your time, attempt to not redo any questions to simulate a realistic setting.
               </p>
             </div>
           </div>
@@ -149,10 +152,11 @@ export default function QuestionGenerator({
     )
   }
 
+
   return (
-    <div className="min-w-full absolute right-0 top-0 flex-1 flex justify-center items-center">
-      <div className="md:mt-12 w-full mx-12 bg-white bg-opacity-25 border backdrop-blur-3xl rounded-3xl overflow-hidden">
-        <div className="bg-neutral-100 text-3xl font-semibold p-4 border-b">
+    <div className="min-w-full absolute right-0 top-0 flex-1 flex justify-center items-center mt-10 md:mt-0">
+      <div className="md:mt-12 w-full mx-12 border backdrop-blur-3xl rounded-3xl overflow-hidden mb-20">
+        <div className="bg-neutral-100 text-xl md:text-3xl font-semibold p-4 border-b">
           Generate Interview
         </div>
         <Form {...form}>
@@ -162,12 +166,12 @@ export default function QuestionGenerator({
           >
             <div className="grid grid-cols-1 gap-6">
               {/* Job Title & Number of Questions */}
-              <div className="md:flex space-x-6 border-b px-6 pb-8">
+              <div className="md:flex md:space-x-6 border-b px-6 pb-8">
                 <FormField
                   control={form.control}
                   name="title"
                   render={({ field }) => (
-                    <FormItem className="w-3/4">
+                    <FormItem className="md:w-3/4 mb-8 md:mb-0">
                       <FormLabel>Title</FormLabel>
                       <FormControl>
                         <Input placeholder="Interview/Job Title" {...field} />
@@ -183,7 +187,7 @@ export default function QuestionGenerator({
                   control={form.control}
                   name="numQuestions"
                   render={({ field }) => (
-                    <FormItem className="w-1/2">
+                    <FormItem className="w-full md:w-1/2">
                       <FormLabel>Number of Questions</FormLabel>
                       <FormControl>
                         <div className="flex items-center space-x-4 translate-y-2">
@@ -214,11 +218,11 @@ export default function QuestionGenerator({
                   control={form.control}
                   name="jobDescription"
                   render={({ field }) => (
-                    <FormItem className="w-full md:w-1/2">
+                    <FormItem className="w-full md:w-1/2 mb-8 md:mb-0">
                       <FormLabel>Job Description</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Describe/paste a job description."
+                          placeholder="Describe or paste a job description."
                           {...field}
                           className="min-h-[200px]"
                         />
@@ -239,7 +243,7 @@ export default function QuestionGenerator({
                       <FormLabel>Resume</FormLabel>
                       <FormControl>
                         <Textarea
-                          placeholder="Describe/paste your resume or experiences."
+                          placeholder="Describe or paste your resume or experiences."
                           {...field}
                           className="min-h-[200px]"
                         />
@@ -255,12 +259,12 @@ export default function QuestionGenerator({
             </div>
 
             {/* Is Technical & Submit Button */}
-            <div className="md:flex gap-4 justify-between items-center px-6">
+            <div className="md:flex gap-4 justify-between items-center px-6 mb-">
               <FormField
                 control={form.control}
                 name="isTechnical"
                 render={({ field }) => (
-                  <FormItem className="flex items-center space-x-4">
+                  <FormItem className="flex items-center space-x-4 mb-8 md:mb-0">
                     <FormControl>
                       <Checkbox
                         checked={field.value}

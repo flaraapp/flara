@@ -3,9 +3,9 @@ import { Karla, Noto_Serif_Display } from "next/font/google";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import "./globals.css";
 
-const hanken = Karla({
+const karla = Karla({
   subsets: ["latin"],
-  variable: '--font-hanken',
+  variable: '--font-karla',
   display: 'swap'
 });
 const frank = Noto_Serif_Display({
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <UserProvider>
-        <body className={`${hanken.variable} ${frank.variable} font-sans text-[#333333]`}>{children}</body>
+        <body className={`${karla.variable} ${frank.variable} font-sans text-[#333333]`}>{children}</body>
       </UserProvider>
     </html>
   );

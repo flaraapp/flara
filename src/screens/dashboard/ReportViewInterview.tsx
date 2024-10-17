@@ -68,7 +68,7 @@ export default function ReportViewInterview({ report }: { report: Report }) {
     })
     const words = parse(JSON.parse(report.transcriptions)[0]).cues;
     return (
-    <div className='w-screen justify-center items-center mt-32'>
+    <div className='w-screen justify-center items-center mt-10'>
         <div className='md:grid md:grid-cols-2 mx-10 gap-10'>
             <div>
                 <p className='text-[#22222290] text-xl -mb-2 font-semibold'>{formatDateTime(report.created_at).toUpperCase()}</p>

@@ -13,7 +13,7 @@ const config: Config = {
   theme: {
   	extend: {
   		fontFamily: {
-  			'sans': 'var(--font-hanken), system-ui, sans-serif',
+			'sans': 'var(--font-karla), system-ui, sans-serif',
   			'serif': 'var(--font-frank), serif'
   		},
   		borderRadius: {
