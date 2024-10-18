@@ -132,7 +132,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
           {/* Scrollable Content Area with Rounded Edges */}
           <div className="flex-1 bg-white overflow-hidden rounded-tl-3xl overflow-x-hidden">
             {/* The container with scrollable content */}
-            <div className="">
+            <div className=" relative overflow-y-auto h-full">
               {children}
             </div>
           </div>
@@ -161,7 +161,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
         {/* Sidebar and Content Stacked for Mobile */}
         <div onClick={()=>{(isSidebarOpen ? setIsSidebarOpen(false) : null)}}className={"flex-1 bg-white overflow-hidden transition duration-500 w-screen" + (isSidebarOpen ? 'brightness-90' : '')}>
           {/* The container with scrollable content */}
-          <div className="">
+          <div className="relative overflow-y-auto h-full">
             {children}
           </div>
         </div>
