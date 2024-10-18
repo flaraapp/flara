@@ -159,7 +159,7 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
         </div>
 
         {/* Sidebar and Content Stacked for Mobile */}
-        <div onClick={()=>{(isSidebarOpen ? setIsSidebarOpen(false) : null)}}className={"flex-1 bg-white overflow-hidden transition duration-500 w-screen" + (isSidebarOpen ? 'brightness-90' : '')}>
+        <div onClick={()=>{(isSidebarOpen ? setIsSidebarOpen(false) : null)}}className={"flex-1 bg-white overflow-hidden transition duration-500 w-screen " + (isSidebarOpen ? 'brightness-90' : '')}>
           {/* The container with scrollable content */}
           <div className="relative overflow-y-auto h-full">
             {children}
