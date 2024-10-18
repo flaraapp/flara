@@ -154,7 +154,7 @@ export default function QuestionGenerator({
 
 
   return (
-    <div className="min-w-full absolute right-0 top-0 flex-1 flex justify-center items-center mt-4 md:mt-0">
+    <div className="min-w-full absolute right-0 top-0 flex-1 flex justify-center items-center mt-4 md:mt-0 bg-white">
       <div className="md:mt-12 w-full mx-5 md:mx-12 border backdrop-blur-3xl rounded-3xl overflow-hidden mb-16 ">
         <div className="bg-neutral-100 text-xl md:text-3xl font-semibold p-4 border-b">
           Generate Interview
