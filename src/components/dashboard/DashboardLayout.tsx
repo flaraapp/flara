@@ -34,7 +34,6 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
   const isActive = (page: 'reports' | 'interview' | 'speech') => { 
     return page === activePage;
   }
-
   return (
     <div className="flex h-screen overflow-hidden bg-white">
       {/* Desktop Layout */}
@@ -131,9 +130,9 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
           </div>
 
           {/* Scrollable Content Area with Rounded Edges */}
-          <div className="flex-1 bg-white overflow-hidden rounded-tl-3xl">
+          <div className="flex-1 bg-white overflow-hidden rounded-tl-3xl overflow-x-hidden">
             {/* The container with scrollable content */}
-            <div className="overflow-x-auto overflow-y-auto h-full relative flex">
+            <div className="">
               {children}
             </div>
           </div>
@@ -160,9 +159,9 @@ export default function DashboardLayout({ children, user }: DashboardLayoutProps
         </div>
 
         {/* Sidebar and Content Stacked for Mobile */}
-        <div onClick={()=>{(isSidebarOpen ? setIsSidebarOpen(false) : null)}}className={"flex-1 bg-white overflow-hidden transition duration-500 " + (isSidebarOpen ? 'brightness-90' : '')}>
+        <div onClick={()=>{(isSidebarOpen ? setIsSidebarOpen(false) : null)}}className={"flex-1 bg-white overflow-hidden transition duration-500 w-screen" + (isSidebarOpen ? 'brightness-90' : '')}>
           {/* The container with scrollable content */}
-          <div className="overflow-x-scroll overflow-y-auto h-full relative flex">
+          <div className="">
             {children}
           </div>
         </div>

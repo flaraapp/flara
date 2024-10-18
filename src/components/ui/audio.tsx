@@ -87,7 +87,7 @@ export const AudioRecorder = ({
 
   function stopRecording() {
     recorder.onstop = () => {
-      const recordBlob = new Blob(recordingChunks, { type: "audio/wav" });
+      const recordBlob = new Blob(recordingChunks, { type: "audio/webm" });
       if (recordingChunks.length > 0) {
         onRecordingComplete(recordBlob); // Pass the complete blob to the parent component
       }
@@ -155,8 +155,8 @@ export const AudioRecorder = ({
         <Tooltip>
           <TooltipTrigger asChild>
             {!isRecording ? (
-              <Button className="bg-[#9aee59] hover:bg-[#6cde12] rounded-full text-[#333333]" onClick={() => startRecording()} size={"icon"}>
-                <Mic size={15} />
+              <Button className="bg-[#9aee59] hover:bg-[#6cde12] rounded-full text-[#333333] h-14 w-14" onClick={() => startRecording()} size={"icon"}>
+                <Mic size={20} />
               </Button>
             ) : (
               <Button
@@ -200,7 +200,7 @@ const Timer = React.memo(
     return (
       <div
         className={cn(
-          "flex items-center justify-center gap-1 text-lg font-semibold text-foreground",
+          "flex items-center justify-center gap-1 text-lg font-semibold text-foreground py-2",
           timerClassName
         )}
       >

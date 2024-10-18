@@ -25,7 +25,7 @@ export default function Question(props: Props) {
 
   return (
     <TooltipProvider>
-      <div className="transition duration-500">
+      <div className="transition duration-500 px-10">
         <div className="flex transition duration-500">
           {props.isCompleted && (
             <div className="w-min mt-1.5">
@@ -47,11 +47,6 @@ export default function Question(props: Props) {
             onRecordingComplete={handleRecordingComplete}
           />
         </div>
-        {props.recordedBlob && (
-          <div>
-          <CustomAudioPlayer src={URL.createObjectURL(props.recordedBlob)} />
-          </div>
-        )}
         {error && <div className="text-red-500 mt-2">{error}</div>}
       </div>
     </TooltipProvider>

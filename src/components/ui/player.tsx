@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css'; // Core styles from the library
+import { Button } from './button';
 
 type CustomAudioPlayerProps = {
   src: string;
@@ -16,6 +17,9 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
     const audioElement = playerRef.current?.audio.current;
 
     if (audioElement) {
+      // Ensure the audio is paused when the component mounts
+      audioElement.pause();
+
       // Set duration when metadata is loaded
       audioElement.addEventListener('loadedmetadata', () => {
         if (audioElement.duration && isFinite(audioElement.duration)) {
@@ -40,15 +44,25 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
     };
   }, []);
 
+  useEffect(() => {
+    const audioElement = playerRef.current?.audio.current;
+    if (audioElement) {
+      // Ensure the audio is always paused initially
+      audioElement.pause();
+    }
+  }, [src]);
+
   const handlePlayPause = () => {
     const audioElement = playerRef.current?.audio.current;
 
-    if (audioElement?.paused) {
-      audioElement.play();
-      setIsPlaying(true);
-    } else {
-      audioElement?.pause();
-      setIsPlaying(false);
+    if (audioElement) {
+      if (audioElement.paused) {
+        audioElement.play();
+        setIsPlaying(true);
+      } else {
+        audioElement.pause();
+        setIsPlaying(false);
+      }
     }
   };
 
@@ -61,13 +75,13 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
 
   return (
     <div
-      className="rounded-2xl mt-10 flex flex-col items-center"
+      className="rounded-2xl flex flex-col items-center"
       onClickCapture={() => setUserInteracted(true)}
     >
       <AudioPlayer
         ref={playerRef}
         src={src}
-        autoPlay={false}
+        autoPlay={false} // Explicitly prevent autoPlay
         showJumpControls={false} // Hide jump controls
         customAdditionalControls={[]} // Hide extra controls
         customVolumeControls={[]} // Hide volume controls
@@ -79,13 +93,14 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
         className="hidden bg-gray-50 text-gray-800 rounded-md w-[50%]" // Hide the audio player's UI
         progressUpdateInterval={500}
       />
-
-      <button
-        className="border bg-gray-100 hover:bg-gray-200 transition duration-500 rounded-2xl px-4 py-2"
+      <Button
         onClick={handlePlayPause}
+        className={
+          "border bg-white hover:bg-neutral-200 px-4 text-[#333333] rounded-xl w-min p-2 flex gap-2 items-center justify-center hover:scale-105 transition duration-500 h-10 "
+        }
       >
-        {isPlaying ? 'Play recorded response' : 'Play recorded response'}
-      </button>
+        <div className="px-4">{isPlaying ? "Pause Response" : "Play Response"}</div>
+      </Button>
     </div>
   );
 };

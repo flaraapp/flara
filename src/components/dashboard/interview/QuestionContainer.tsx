@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
 import Image from "next/image";
+import CustomAudioPlayer from "@/components/ui/player";
 
 interface Props {
   questions: string[];
@@ -187,7 +188,7 @@ export default function QuestionContainer({ questions, props, setError }: Props)
             </Button>
             </div>
           </CardHeader>
-          <CardContent className="py-10">
+          <CardContent className="pt-10 px-0 pb-0">
             <Question
               key={activeId}
               question={questions[activeId]}
@@ -197,30 +198,35 @@ export default function QuestionContainer({ questions, props, setError }: Props)
               isCompleted={completedQuestions[activeId]} // Pass the completed status from the state
               completeQuestion={completeQuestion} // Completion logic passed
             />
+            <div className="flex justify-between px-4 items-center w-full bg-neutral-100 h-full mt-10 py-4">
+              { blobs[activeId] &&
+                <div>
+                  <CustomAudioPlayer src={URL.createObjectURL(blobs[activeId])} />
+                </div>
+              }
+              { completedQuestions[completedQuestions.length-1] &&
+              <Button
+                onClick={handleSubmit}
+                className={
+                  "bg-[#9aee59] hover:bg-[#6cde12] text-[#333333] px-4 rounded-xl w-min p-2 flex gap-2 items-center justify-center hover:scale-105 transition duration-500 h-10 "
+                }
+              >
+                <div className="px-4">Submit for Processing</div>
+              </Button>
+              }
+              { (!(completedQuestions[completedQuestions.length-1]) && blobs[activeId] && completedQuestions[0] && !completedQuestions[completedQuestions.length-1]) &&
+              <Button
+                onClick={handleNext}
+                className={
+                  "border bg-white hover:bg-neutral-200 px-4 text-[#333333] rounded-xl w-min p-2 flex gap-2 items-center justify-center hover:scale-105 transition duration-500 h-10 "
+                }
+              >
+                <div className="px-4">Next Question</div>
+              </Button>
+              }
+            </div>
           </CardContent>
         </Card>
-        <div className="flex justify-center mt-4">
-          { completedQuestions[completedQuestions.length-1] &&
-          <Button
-            onClick={handleSubmit}
-            className={
-              "bg-[#9aee59] hover:bg-[#6cde12] text-[#333333] px-4 rounded-xl w-min p-2 flex gap-2 items-center justify-center hover:scale-105 transition duration-500 h-10 "
-            }
-          >
-            <div className="px-4">Submit for Processing</div>
-          </Button>
-          }
-          { (completedQuestions[0] && !completedQuestions[completedQuestions.length-1]) &&
-          <Button
-            onClick={handleNext}
-            className={
-              "border bg-gray-100 hover:bg-gray-200 px-4 text-[#333333] rounded-xl w-min p-2 flex gap-2 items-center justify-center hover:scale-105 transition duration-500 h-10 "
-            }
-          >
-            <div className="px-4">Next Question</div>
-          </Button>
-          }
-        </div>
       </div>
     );
 }
