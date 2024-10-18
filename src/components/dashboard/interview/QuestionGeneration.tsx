@@ -174,7 +174,7 @@ export default function QuestionGenerator({
                     <FormItem className="md:w-3/4 mb-8 md:mb-0">
                       <FormLabel>Title</FormLabel>
                       <FormControl>
-                        <Input placeholder="Interview/Job Title" {...field} />
+                        <Input className="text-md" placeholder="Interview/Job Title" {...field} />
                       </FormControl>
                       <FormDescription>
                         This title will appear on the interview report.
@@ -224,7 +224,7 @@ export default function QuestionGenerator({
                         <Textarea
                           placeholder="Describe or paste a job description."
                           {...field}
-                          className="min-h-[200px]"
+                          className="min-h-[200px] text-md"
                         />
                       </FormControl>
                       <FormDescription>
@@ -245,7 +245,7 @@ export default function QuestionGenerator({
                         <Textarea
                           placeholder="Describe or paste your resume or experiences."
                           {...field}
-                          className="min-h-[200px]"
+                          className="min-h-[200px] text-md"
                         />
                       </FormControl>
                       <FormDescription>
