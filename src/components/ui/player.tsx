@@ -19,7 +19,21 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
   const [duration, setDuration] = useState<number | null>(null);
   const [webmBlobURL, setWebmBlobURL] = useState<string | null>(null);
 
-  // Function to convert audio to webm using MediaRecorder
+  const handlePlayPause = () => {
+    const audioElement = isMobile() ? audioElementRef.current : playerRef.current?.audio.current;
+
+    if (audioElement) {
+      if (audioElement.paused) {
+        audioElement.play();
+        setIsPlaying(true);
+      } else {
+        audioElement.pause();
+        setIsPlaying(false);
+      }
+    }
+  };
+
+  // Convert to WebM for non-mobile devices
   const convertToWebm = async (audioSrc: string) => {
     try {
       const audioContext = new AudioContext();
@@ -70,34 +84,21 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
     }
   }, [src]);
 
-  const handlePlayPause = () => {
-    const audioElement = isMobile() ? audioElementRef.current : playerRef.current?.audio.current;
-
-    if (audioElement) {
-      if (audioElement.paused) {
-        audioElement.play();
-        setIsPlaying(true);
-      } else {
-        audioElement.pause();
-        setIsPlaying(false);
-      }
-    }
-  };
-
-  const formatTime = (time: number | null) => {
-    if (time === null || time === 0) return '00:00'; // Default time if there's an issue
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-  };
-
   return (
     <div
       className="rounded-2xl flex flex-col items-center"
       onClickCapture={() => setUserInteracted(true)}
     >
       {isMobile() ? (
-        <audio ref={audioElementRef} src={src} controls={false} preload="metadata" />
+        // Directly use native HTML5 audio for mobile devices
+        <audio
+          ref={audioElementRef}
+          src={src}
+          controls // Show native controls for better mobile compatibility
+          preload="metadata"
+          onPlay={() => setIsPlaying(true)}
+          onPause={() => setIsPlaying(false)}
+        />
       ) : (
         webmBlobURL && (
           <AudioPlayer
