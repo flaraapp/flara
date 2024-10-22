@@ -12,15 +12,62 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
   const [userInteracted, setUserInteracted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState<number | null>(null);
+  const [webmBlobURL, setWebmBlobURL] = useState<string | null>(null);
+
+  // Function to convert audio to webm using MediaRecorder
+  const convertToWebm = async (audioSrc: string) => {
+    try {
+      const audioContext = new AudioContext();
+      const audioBuffer = await fetch(audioSrc)
+        .then((response) => response.arrayBuffer())
+        .then((buffer) => audioContext.decodeAudioData(buffer));
+
+      const streamDestination = audioContext.createMediaStreamDestination();
+      const source = audioContext.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(streamDestination);
+      source.start();
+
+      // Set up MediaRecorder for WebM conversion
+      const mediaRecorder = new MediaRecorder(streamDestination.stream, {
+        mimeType: 'audio/webm',
+      });
+      let chunks: BlobPart[] = [];
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          chunks.push(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = () => {
+        const webmBlob = new Blob(chunks, { type: 'audio/webm' });
+        const webmBlobURL = URL.createObjectURL(webmBlob);
+        setWebmBlobURL(webmBlobURL); // Set the converted WebM Blob URL for playback
+      };
+
+      // Start recording and convert to WebM
+      mediaRecorder.start();
+      setTimeout(() => {
+        mediaRecorder.stop(); // Stop recording after audio playback is finished
+      }, audioBuffer.duration * 1000);
+    } catch (error) {
+      console.error('Error converting audio to WebM:', error);
+    }
+  };
+
+  useEffect(() => {
+    // Convert the src audio to WebM format on mount
+    convertToWebm(src);
+  }, [src]);
 
   useEffect(() => {
     const audioElement = playerRef.current?.audio.current;
 
     if (audioElement) {
-      // Ensure the audio is paused when the component mounts
+      // Pause audio when the webmBlobURL is updated to prevent autoplay
       audioElement.pause();
 
-      // Set duration when metadata is loaded
+      // Ensure the audio is paused when the component mounts or when webmBlobURL changes
       audioElement.addEventListener('loadedmetadata', () => {
         if (audioElement.duration && isFinite(audioElement.duration)) {
           setDuration(audioElement.duration);
@@ -42,15 +89,7 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
         audioElement.removeEventListener('ended', () => {});
       }
     };
-  }, []);
-
-  useEffect(() => {
-    const audioElement = playerRef.current?.audio.current;
-    if (audioElement) {
-      // Ensure the audio is always paused initially
-      audioElement.pause();
-    }
-  }, [src]);
+  }, [webmBlobURL]); // Only run this when the webmBlobURL changes
 
   const handlePlayPause = () => {
     const audioElement = playerRef.current?.audio.current;
@@ -78,21 +117,23 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
       className="rounded-2xl flex flex-col items-center"
       onClickCapture={() => setUserInteracted(true)}
     >
-      <AudioPlayer
-        ref={playerRef}
-        src={src}
-        autoPlay={false} // Explicitly prevent autoPlay
-        showJumpControls={false} // Hide jump controls
-        customAdditionalControls={[]} // Hide extra controls
-        customVolumeControls={[]} // Hide volume controls
-        layout="horizontal-reverse"
-        customIcons={{
-          play: <span />, // Remove default play icon
-          pause: <span />, // Remove default pause icon
-        }}
-        className="hidden bg-gray-50 text-gray-800 rounded-md w-[50%]" // Hide the audio player's UI
-        progressUpdateInterval={500}
-      />
+      {webmBlobURL && (
+        <AudioPlayer
+          ref={playerRef}
+          src={webmBlobURL} // Play the converted WebM blob
+          autoPlay={false} // Explicitly prevent autoPlay
+          showJumpControls={false} // Hide jump controls
+          customAdditionalControls={[]} // Hide extra controls
+          customVolumeControls={[]} // Hide volume controls
+          layout="horizontal-reverse"
+          customIcons={{
+            play: <span />, // Remove default play icon
+            pause: <span />, // Remove default pause icon
+          }}
+          className="hidden bg-gray-50 text-gray-800 rounded-md w-[50%]" // Hide the audio player's UI
+          progressUpdateInterval={500}
+        />
+      )}
       <Button
         onClick={handlePlayPause}
         className={

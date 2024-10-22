@@ -102,7 +102,7 @@ export default function QuestionContainer({ questions, props, setError }: Props)
   if (processing)
     return (
       <div className="overflow-y-hidden grow h-full">
-        <div className="flex justify-center items-center h-screen  md:h-full">
+        <div className="flex justify-center items-center h-full">
           <div className="mx-10 border rounded-3xl overflow-hidden">
             <div className="flex justify-center items-center pb-4">
               <svg
@@ -142,7 +142,7 @@ export default function QuestionContainer({ questions, props, setError }: Props)
 
   if (!processing)
     return (
-      <div className="scale-90 md:scale-100 mt-10 md:mt-12 w-full mx-5 md:mx-12 rounded-3xl mb-20">
+      <div className="scale-[85%] md:scale-100 mt-10 md:mt-12 w-full mx-0 md:mx-12 rounded-3xl mb-20">
         <Card className="rounded-3xl shadow-none overflow-hidden border">
           <CardHeader className="bg-neutral-100 p-4 rounded-t-3xl">
             <div className="flex justify-between items-center">
