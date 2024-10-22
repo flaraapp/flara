@@ -7,8 +7,13 @@ type CustomAudioPlayerProps = {
   src: string;
 };
 
+const isMobile = () => {
+  return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+};
+
 const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
   const playerRef = useRef<AudioPlayer>(null);
+  const audioElementRef = useRef<HTMLAudioElement>(null); // For mobile playback
   const [userInteracted, setUserInteracted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState<number | null>(null);
@@ -56,43 +61,17 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
   };
 
   useEffect(() => {
-    // Convert the src audio to WebM format on mount
-    convertToWebm(src);
+    if (isMobile()) {
+      // On mobile, we do not convert the audio, just use the src directly
+      setWebmBlobURL(null);
+    } else {
+      // Convert to WebM on non-mobile devices
+      convertToWebm(src);
+    }
   }, [src]);
 
-  useEffect(() => {
-    const audioElement = playerRef.current?.audio.current;
-
-    if (audioElement) {
-      // Pause audio when the webmBlobURL is updated to prevent autoplay
-      audioElement.pause();
-
-      // Ensure the audio is paused when the component mounts or when webmBlobURL changes
-      audioElement.addEventListener('loadedmetadata', () => {
-        if (audioElement.duration && isFinite(audioElement.duration)) {
-          setDuration(audioElement.duration);
-        } else {
-          setDuration(0); // Handle cases where duration is invalid
-        }
-      });
-
-      // Reset isPlaying state when audio finishes playing
-      audioElement.addEventListener('ended', () => {
-        setIsPlaying(false); // Reset the state to false when playback ends
-      });
-    }
-
-    // Cleanup event listeners on component unmount
-    return () => {
-      if (audioElement) {
-        audioElement.removeEventListener('loadedmetadata', () => {});
-        audioElement.removeEventListener('ended', () => {});
-      }
-    };
-  }, [webmBlobURL]); // Only run this when the webmBlobURL changes
-
   const handlePlayPause = () => {
-    const audioElement = playerRef.current?.audio.current;
+    const audioElement = isMobile() ? audioElementRef.current : playerRef.current?.audio.current;
 
     if (audioElement) {
       if (audioElement.paused) {
@@ -117,23 +96,28 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
       className="rounded-2xl flex flex-col items-center"
       onClickCapture={() => setUserInteracted(true)}
     >
-      {webmBlobURL && (
-        <AudioPlayer
-          ref={playerRef}
-          src={webmBlobURL} // Play the converted WebM blob
-          autoPlay={false} // Explicitly prevent autoPlay
-          showJumpControls={false} // Hide jump controls
-          customAdditionalControls={[]} // Hide extra controls
-          customVolumeControls={[]} // Hide volume controls
-          layout="horizontal-reverse"
-          customIcons={{
-            play: <span />, // Remove default play icon
-            pause: <span />, // Remove default pause icon
-          }}
-          className="hidden bg-gray-50 text-gray-800 rounded-md w-[50%]" // Hide the audio player's UI
-          progressUpdateInterval={500}
-        />
+      {isMobile() ? (
+        <audio ref={audioElementRef} src={src} controls={false} preload="metadata" />
+      ) : (
+        webmBlobURL && (
+          <AudioPlayer
+            ref={playerRef}
+            src={webmBlobURL} // Play the converted WebM blob
+            autoPlay={false} // Explicitly prevent autoPlay
+            showJumpControls={false} // Hide jump controls
+            customAdditionalControls={[]} // Hide extra controls
+            customVolumeControls={[]} // Hide volume controls
+            layout="horizontal-reverse"
+            customIcons={{
+              play: <span />, // Remove default play icon
+              pause: <span />, // Remove default pause icon
+            }}
+            className="hidden bg-gray-50 text-gray-800 rounded-md w-[50%]" // Hide the audio player's UI
+            progressUpdateInterval={500}
+          />
+        )
       )}
+
       <Button
         onClick={handlePlayPause}
         className={

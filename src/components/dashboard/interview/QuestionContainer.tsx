@@ -142,7 +142,7 @@ export default function QuestionContainer({ questions, props, setError }: Props)
 
   if (!processing)
     return (
-      <div className="scale-[85%] md:scale-100 mt-10 md:mt-12 w-full mx-0 md:mx-12 rounded-3xl mb-20">
+      <div className="scale-[85%] md:scale-100 mt-10 md:mt-12  mx-0 md:mx-12 rounded-3xl mb-20">
         <Card className="rounded-3xl shadow-none overflow-hidden border">
           <CardHeader className="bg-neutral-100 p-4 rounded-t-3xl">
             <div className="flex justify-between items-center">

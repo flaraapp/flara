@@ -111,9 +111,9 @@ export default function QuestionGenerator({
   }
 
 
-    if (generating) { return (
+    if (true) { return (
       <div className="overflow-y-hidden grow">
-        <div className="flex justify-center items-center h-screen md:h-full">
+        <div className="flex justify-center items-center">
           <div className="mx-10 border rounded-3xl overflow-hidden">
             <div className="flex justify-center items-center pb-4">
               <svg
