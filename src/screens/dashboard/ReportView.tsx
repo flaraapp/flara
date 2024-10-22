@@ -35,7 +35,7 @@ export default function ReportView({ report }: { report: Report }) {
       }
     const words = parse(report.transcription).cues;
     return (
-    <div className='w-screen justify-center items-center mt-10'>
+    <div className='justify-center items-center mt-10'>
         <div className='md:grid md:grid-cols-2 mx-10 gap-10'>
             <div>
                 <p className='text-[#22222290] text-xl -mb-2 font-semibold'>{formatDateTime(report.created_at).toUpperCase()}</p>
