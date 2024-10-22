@@ -71,10 +71,23 @@ export const AudioRecorder = ({
         })
         .then((stream) => {
           setIsRecording(true);
-          recorder = new MediaRecorder(stream, { mimeType: 'audio/webm' }); // Use 'audio/webm' for better compatibility
+          // Check for the best supported MIME type
+          const options = [
+            { mimeType: 'audio/webm' },
+            { mimeType: 'audio/mp4' },
+            { mimeType: 'audio/mpeg' },
+          ];
+          const supportedType = options.find((option) =>
+            MediaRecorder.isTypeSupported(option.mimeType)
+          );
+
+          // Fallback if none is supported
+          const mimeType = supportedType ? supportedType.mimeType : 'audio/webm';
+
+          recorder = new MediaRecorder(stream, { mimeType });
           recordingChunks = [];
           recorder.ondataavailable = (e) => {
-            if (e.data.size > 0) recordingChunks.push(e.data); // Ensure only non-empty data is pushed
+            if (e.data.size > 0) recordingChunks.push(e.data);
           };
           recorder.start();
         })
@@ -84,6 +97,7 @@ export const AudioRecorder = ({
         });
     }
   }
+
 
   function stopRecording() {
     recorder.onstop = () => {
