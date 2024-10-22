@@ -14,10 +14,9 @@ const isMobile = () => {
 const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
   const playerRef = useRef<AudioPlayer>(null);
   const audioElementRef = useRef<HTMLAudioElement>(null); // For mobile playback
-  const [userInteracted, setUserInteracted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [duration, setDuration] = useState<number | null>(null);
   const [webmBlobURL, setWebmBlobURL] = useState<string | null>(null);
+  const [error, setError] = useState<boolean>(false); // To capture audio errors on iOS
 
   const handlePlayPause = () => {
     const audioElement = isMobile() ? audioElementRef.current : playerRef.current?.audio.current;
@@ -76,7 +75,7 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
 
   useEffect(() => {
     if (isMobile()) {
-      // On mobile, we do not convert the audio, just use the src directly
+      // On mobile, use the direct MP4/MPEG file without conversion
       setWebmBlobURL(null);
     } else {
       // Convert to WebM on non-mobile devices
@@ -85,12 +84,9 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
   }, [src]);
 
   return (
-    <div
-      className="rounded-2xl flex flex-col items-center"
-      onClickCapture={() => setUserInteracted(true)}
-    >
+    <div className="rounded-2xl flex flex-col items-center">
       {isMobile() ? (
-        // Directly use native HTML5 audio for mobile devices
+        // Native HTML5 audio for mobile devices with error handling
         <audio
           ref={audioElementRef}
           src={src}
@@ -98,6 +94,10 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
           preload="metadata"
           onPlay={() => setIsPlaying(true)}
           onPause={() => setIsPlaying(false)}
+          onError={() => {
+            setError(true);
+            console.error('Audio playback error on mobile.');
+          }}
         />
       ) : (
         webmBlobURL && (
@@ -119,14 +119,19 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src }) => {
         )
       )}
 
-      <Button
-        onClick={handlePlayPause}
-        className={
-          "border bg-white hover:bg-neutral-200 px-4 text-[#333333] rounded-xl w-min p-2 flex gap-2 items-center justify-center hover:scale-105 transition duration-500 h-10 "
-        }
-      >
-        <div className="px-4">{isPlaying ? "Pause Response" : "Play Response"}</div>
-      </Button>
+      {/* Show button only for non-mobile devices */}
+      {!isMobile() && (
+        <Button
+          onClick={handlePlayPause}
+          className={
+            "border bg-white hover:bg-neutral-200 px-4 text-[#333333] rounded-xl w-min p-2 flex gap-2 items-center justify-center hover:scale-105 transition duration-500 h-10 "
+          }
+        >
+          <div className="px-4">{isPlaying ? "Pause Response" : "Play Response"}</div>
+        </Button>
+      )}
+
+      {error && <p className="text-red-500 mt-2">Audio playback failed on this device.</p>}
     </div>
   );
 };
