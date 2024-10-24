@@ -30,7 +30,7 @@ export default function SubmitSpeech({ blob, blobUrl, isVideo, setBlob, setBlobU
         form.append('isVideo', isVideo + "");
 
         try {
-            fetch('https://flara--flara-db-fastapi-endpoint.modal.run/process_speech/', {
+            fetch('https://flara--flara-backend-fastapi-endpoint.modal.run/process_speech/', {
               method: 'POST',
               body: form,
               mode: 'no-cors',
